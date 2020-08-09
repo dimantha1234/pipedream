@@ -13,7 +13,7 @@ Pipedream components are Node.js modules that run on Pipedream's serverless infr
 
 ## Getting Started
 
-To help you get started, we created a step-by-step walkthrough that demonstrates how to:
+To help you get started, we created a [step-by-step walkthrough](/quickstart.md) that demonstrates how to:
 
 - Deploy components to Pipedream using the CLI
 - Invoke a component manually, or on a schedule or HTTP request
