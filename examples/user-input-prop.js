@@ -9,6 +9,6 @@ module.exports = {
       }
   },
   async run() {
-      console.log(this.msg)
+    this.$emit(this.msg)
   }, 
 }

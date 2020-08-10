@@ -1,15 +1,50 @@
-# Component API Reference
+- [Overview](#event-lifecycle)  
+  -  [What is a component?](#event-lifecycle)
+  -  [Getting Started](#component-structure)
+  -  [Contributing](#component-structure)
+-  [Event Lifecycle](#event)
+     -  [Triggering Components](#emitting-events)
+     -  [Emitting Events](#emitting-events)
+     -  [Consuming Events](#emitting-events)
+        -  [UI](#emitting-events)
+        -  [APIs](#emitting-events)
+        -  [Workflows](#emitting-events)
+- [Component Lifecycle](#event-lifecycle)
+   -  [Deploy](#emitting-events)
+   -  [Activate](#emitting-events)
+   -  [Update](#emitting-events)
+   -  [Deactivate](#emitting-events)
+   -  [Delete](#emitting-events)
+- [Component Structure](#component-structure)
+  - [Props](#props)
+    * [User Input Props](#user-input-props)
+    * [Interface Props](#interface-props)
+      + [Timer](#timer)
+      + [HTTP](#http)
+    * [Service Props](#service-props)
+      + [DB](#db)
+    * [App Props](#app-props)
+  - [Methods](#methods)
+  - [Hooks](#hooks)
+  - [Dedupe Strategies](#dedupe-strategies)
+  - [Run](#run)
+    - [$emit](#using-npm-packages)
+    - [Using npm packages](#using-npm-packages)
 
-Pipedream components are Node.js modules that run on Pipedream's serverless infrastructure. This document is a reference for the component API. Please raise an issue or PR in this repo if you notice something out-of-date.
+# Overview 
 
-## Capabilities
+## What is a component?
+
+Pipedream components are Node.js modules that run on Pipedream's serverless infrastructure. 
 
 - Trigger Node.js on HTTP requests, timers, cron schedules, or manually
+- Emit data on each event to inspect it, trigger Pipedream hosted workflows or access it outside of Pipedream via API
 - Accept user input on deploy via [CLI](https://docs.pipedream.com/cli/reference/#pd-deploy), [API](https://docs.pipedream.com/api/rest/#overview), or [UI](https://pipedream.com/sources)
 - Connect to 300+ apps using Pipedream managed auth
 - Use most npm pacakges with no `npm install` or `package.json` required
 - Store and retrieve state using the [built-in key-value store](#servicedb)
-- Emit data you process within the component, allowing you to trigger Pipedream hosted workflows or access it outside of Pipedream via API
+
+This document is a reference for the component API. Please raise an issue or PR in this repo if you notice something out-of-date.
 
 ## Getting Started
 
@@ -22,26 +57,45 @@ To help you get started, we created a [step-by-step walkthrough](/quickstart.md)
 - Use Pipedream managed OAuth for an app
 - Use npm packages in components
 
-## Learn and Contribute
+## Contributing
 
-You can browse, instantiate and contribute to curated components in Pipedream's Github repo, or you can author your own and maintain your code via your standard CI/CD process.
+Deploy or contribute to curated open source components in Pipedream's Github repo. Or author your own and maintain your code via your standard CI/CD process.
 
+# Event Lifecycle
 
-# Reference
+## Emitting Events
 
-- [Component Structure](#component-structure)
-- [Props](#props)
-  * [User Input Props](#user-input-props)
-  * [Interface Props](#interface-props)
-    + [Timer](#timer)
-    + [HTTP](#http)
-  * [Service Props](#service-props)
-    + [DB](#db)
-  * [App Props](#app-props)
-- [Hooks](#hooks)
-- [Dedupe Strategies](#dedupe-strategies)
-- [Emitting Events](#emitting-events)
-- [Using npm packages](#using-npm-packages)
+`this.$emit()` is a method in scope for the `run` method of a component
+
+```javascript
+this.$emit(
+  event,
+  {
+    id,
+    summary,
+    ts,
+  }
+)
+```
+
+| Property         | Type | Required? |  Description                                                                                  | 
+|---------------------|-------|-----------------------------------------------------------------------------------------|-----|
+| `event`  | JSON serializable data | optional | The data to emit as the event |
+| `id`  | `string` or `number` | Required if a dedupe strategy is applied | A value to uniquely identify this event. Common `id` values may be a 3rd party ID, a timestamp, or a data hash |
+| `summary`  | `string` | optional | Define a summary to customize the data displayed in the events list to help differentiate events at a glance  |
+| `ts`  | `integer` | optional | If you submit a timestamp, events will automatically be ordered and emitted from oldest to newest. If using the `last` dedupe strategy, the value cached as the `last` event for an invocation will correspond to the event with the newest timestamp. |
+
+Following is a basic example that emits an event on each component execution.
+
+```javascript
+module.exports = {
+  name: "this.$emit() example",
+  description: "Deploy and run this component manually via the Pipedream UI",
+  async run() {
+    this.$emit({ message: "hello world!" })
+  }
+}
+```
 
 # Component Structure
 
@@ -127,7 +181,7 @@ props: {
 
 ### Example
 
-Following is a basic example that demonstrates how to capture user input via a prop and log the output to the console.
+Following is a basic example that demonstrates how to capture user input via a prop and emit it on each event.
 
 ```javascript
 module.exports = {
@@ -141,7 +195,7 @@ module.exports = {
     }
   },
   async run() {
-    console.log(this.msg)
+    this.$emit(this.msg)
   },
 }
 ```
@@ -189,7 +243,7 @@ module.exports = {
     }
   },
   async run() {
-    console.log(this.msg)
+    this.$emit(this.msg)
   },
 }
 ```
@@ -246,7 +300,7 @@ module.exports = {
     url: { propDefinition: [rss, "urlDef"] },
   },
   async run() {
-      console.log(this.url)
+    console.log(this.url)
   }, 
 }
 ```
@@ -304,7 +358,7 @@ module.exports = {
     }
   },
   async run() {
-      console.log('hello world!')
+    console.log('hello world!')
   }, 
 }
 ```
@@ -324,7 +378,7 @@ module.exports = {
     }
   },
   async run() {
-      console.log('hello world!')
+    console.log('hello world!')
   }, 
 }
 ```
@@ -510,29 +564,6 @@ hooks: {
 | `unique`        | Pipedream maintains a cache of 100 emitted `id` values. Events with `id` values that are not in the cache are emitted, and the `id` value is added to the cache. After 100 events, `id` values are purged from the cache based on the order received (first in, first out). A common use case for this strategy is an RSS feed which typically does not exceed 100 items | 
 | `greatest`        | Pipedream caches the largest `id` value (must be numeric). Only events with larger `id` values are emitted (and the cache is updated to match the new, largest value). | 
 | `last`        | Pipedream caches the ID assocaited with the last emitted event. When new events are emitted, only events after the matching `id` value will be emitted as events. If no `id` values match, then all events will be emitted. | 
-
-
-# Emitting Events
-
-> `this.$emit()` is a method in scope for the `run` method of a component
-
-```javascript
-this.$emit(
-  event,
-  {
-    id,
-    summary,
-    ts,
-  }
-)
-```
-
-| Property         | Type | Required? |  Description                                                                                  | 
-|---------------------|-------|-----------------------------------------------------------------------------------------|-----|
-| `event`  | JSON serializable data | optional | The data to emit as the event |
-| `id`  | `string` or `number` | Required if a dedupe strategy is applied | A value to uniquely identify this event. Common `id` values may be a 3rd party ID, a timestamp, or a data hash |
-| `summary`  | `string` | optional | Define a summary to customize the data displayed in the events list to help differentiate events at a glance  |
-| `ts`  | `integer` | optional | If you submit a timestamp, events will automatically be ordered and emitted from oldest to newest. If using the `last` dedupe strategy, the value cached as the `last` event for an invocation will correspond to the event with the newest timestamp. |
 
 # Run
 
