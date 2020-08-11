@@ -1,6 +1,6 @@
 - [Overview](#overview)
   * [What is a component?](#what-is-a-component-)
-  * [Getting Started](#getting-started)
+  * [Quickstart](#quickstart)
   * [Contributing](#contributing)
 - [Event Lifecycle](#event-lifecycle)
   * [Triggering Components](#triggering-components)
@@ -42,7 +42,7 @@ Pipedream components are Node.js modules that run on Pipedream's serverless infr
 
 This document is a reference for the component API. Please raise an issue or PR in this repo if you notice something out-of-date.
 
-## Getting Started
+## Quickstart
 
 To help you get started, we created a [step-by-step walkthrough](/quickstart.md) that demonstrates how to:
 
