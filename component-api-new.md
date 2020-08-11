@@ -1,35 +1,31 @@
-- [Overview](#event-lifecycle)  
-  -  [What is a component?](#event-lifecycle)
-  -  [Getting Started](#component-structure)
-  -  [Contributing](#component-structure)
--  [Event Lifecycle](#event)
-     -  [Triggering Components](#emitting-events)
-     -  [Emitting Events](#emitting-events)
-     -  [Consuming Events](#emitting-events)
-        -  [UI](#emitting-events)
-        -  [APIs](#emitting-events)
-        -  [Workflows](#emitting-events)
-- [Component Lifecycle](#event-lifecycle)
-   -  [Deploy](#emitting-events)
-   -  [Activate](#emitting-events)
-   -  [Update](#emitting-events)
-   -  [Deactivate](#emitting-events)
-   -  [Delete](#emitting-events)
+- [Overview](#overview)
+  * [What is a component?](#what-is-a-component-)
+  * [Getting Started](#getting-started)
+  * [Contributing](#contributing)
+- [Event Lifecycle](#event-lifecycle)
+  * [Triggering Components](#triggering-components)
+  * [Emitting Events](#emitting-events)
+  * [Consuming Events](#consuming-events)
+    + [UI](#ui)
+    + [Workflows](#workflows)
+    + [API](#api)
+    + [CLI](#cli)
+- [Component Lifecycle](#component-lifecycle)
 - [Component Structure](#component-structure)
-  - [Props](#props)
-    * [User Input Props](#user-input-props)
-    * [Interface Props](#interface-props)
-      + [Timer](#timer)
-      + [HTTP](#http)
-    * [Service Props](#service-props)
-      + [DB](#db)
-    * [App Props](#app-props)
-  - [Methods](#methods)
-  - [Hooks](#hooks)
-  - [Dedupe Strategies](#dedupe-strategies)
-  - [Run](#run)
-    - [$emit](#using-npm-packages)
-    - [Using npm packages](#using-npm-packages)
+- [Props](#props)
+  * [User Input Props](#user-input-props)
+  * [Interface Props](#interface-props)
+    + [Timer](#timer)
+    + [HTTP](#http)
+  * [Service Props](#service-props)
+    + [DB](#db)
+  * [App Props](#app-props)
+  [Methods](#methods)
+- [Hooks](#hooks)
+- [Dedupe Strategies](#dedupe-strategies)
+- [Run](#run)
+  * [$emit](#-emit)
+  * [Using npm packages](#using-npm-packages)
 
 # Overview 
 
@@ -63,39 +59,61 @@ Deploy or contribute to curated open source components in Pipedream's Github rep
 
 # Event Lifecycle
 
+The event lifecycle applies to deployed components. Learn about the [component lifecycle](#component-lifecycle).
+
+![image-20200811160828436](images/image-20200811160828436.png)
+
+## Triggering Components
+
+Components are triggered when you manually run them (e.g., via the **RUN NOW** button in the UI) or when one of their [interfaces](#interface-props) is triggered. Pipedream currently support **HTTP** and **timer** interfaces.
+
+When a component is triggered, the `run()` method of the component is executed. Standard output and errors are surfaced in the **logs**.
+
 ## Emitting Events
 
-`this.$emit()` is a method in scope for the `run` method of a component
+Components can emit events via `this.$emit()`. If you define a dedupe strategy for a component, Pipedream automatically dedupes the events you emit. 
 
-```javascript
-this.$emit(
-  event,
-  {
-    id,
-    summary,
-    ts,
-  }
-)
+>  **TIP:** if you want to use a dedupe strategy, be sure to pass an `id` for each event. Pipedream uses this value for deduping purposes.
+
+## Consuming Events
+
+Pipedream makes it easy to consume events via:
+
+- The UI
+- Workflows
+- APIs
+- CLI
+
+### UI
+
+When you navigate to your source component in the UI, you will be able to select and inspect the most recent 100 events (i.e., an event bin). For example, if you send requests to a simple HTTP source, you will be able to inspect the events (i.e, a request bin).
+
+### Workflows
+
+Trigger hosted Node.js workflows on each event. Integrate with 300+ apps including Google Sheets, Discord, Slack, AWS, and more!
+
+### API
+
+Events can be retrieved using the [REST API](https://docs.pipedream.com/api/rest/)  or [SSE stream tied to your component](https://docs.pipedream.com/api/sse/). This makes it easy to retrieve data processed by your component from another app. Typically, you'll want to use the [REST API](https://docs.pipedream.com/api/rest/) to retrieve events in batch, and connect to the [SSE stream](https://docs.pipedream.com/api/sse/) to process them in real time.
+
+### CLI
+
+For example, you can use the CLI to retrieve the last 10 events:
+
+```
+λ pd events -n 10 <source-name>
+{ name: "Luke Skywalker" }
+{ name: "Leia Organa" }
+{ name: "Han Solo" }
 ```
 
-| Property         | Type | Required? |  Description                                                                                  | 
-|---------------------|-------|-----------------------------------------------------------------------------------------|-----|
-| `event`  | JSON serializable data | optional | The data to emit as the event |
-| `id`  | `string` or `number` | Required if a dedupe strategy is applied | A value to uniquely identify this event. Common `id` values may be a 3rd party ID, a timestamp, or a data hash |
-| `summary`  | `string` | optional | Define a summary to customize the data displayed in the events list to help differentiate events at a glance  |
-| `ts`  | `integer` | optional | If you submit a timestamp, events will automatically be ordered and emitted from oldest to newest. If using the `last` dedupe strategy, the value cached as the `last` event for an invocation will correspond to the event with the newest timestamp. |
 
-Following is a basic example that emits an event on each component execution.
 
-```javascript
-module.exports = {
-  name: "this.$emit() example",
-  description: "Deploy and run this component manually via the Pipedream UI",
-  async run() {
-    this.$emit({ message: "hello world!" })
-  }
-}
-```
+# Component Lifecycle
+
+
+
+
 
 # Component Structure
 
@@ -134,11 +152,11 @@ module.exports = {
 
  Props are custom attributes you can register on a component. When a value is passed to a prop attribute, it becomes a property on that component instance. You can reference these properties in component code using `this` (e.g., `this.propName`). 
 
-| Prop Type        | Description    | 
+| Prop Type        | Description    |
 |-------------|----------------|
 | [User Input](#user-input-props) | Enable components to accept input on deploy |
 | [Interface](#interface-props)  | Attaches a Pipedream interface to your component (e.g., an HTTP interface or timer) |
-| [Service](#service-props)  | Attaches a Pipedream service to  your component (e.g., a key-value database to maintain state) | 
+| [Service](#service-props)  | Attaches a Pipedream service to  your component (e.g., a key-value database to maintain state) |
 | [App](#user-input-props) | Enables managed auth for a component |
 
 
@@ -309,9 +327,9 @@ module.exports = {
 
 Interface props are infrastructure abstractions provided by the Pipedream platform. They declare how a component is invoked — via HTTP request, run on a schedule, etc. — and therefore define the shape of the events it processes.
 
-| Interface Type         | Description                                                                                  | 
+| Interface Type         | Description                                                                                  |
 |---------------------|----------------------------------------------------------------------------------------------|
-| [Timer](#timer) | Invoke your component on an interval (defaults to every hour) or based on a cron expression  | 
+| [Timer](#timer) | Invoke your component on an interval (defaults to every hour) or based on a cron expression  |
 | [HTTP](#http)  | Invoke your code on HTTP requests                                                            |
 
 ### Timer
@@ -329,9 +347,9 @@ props: {
 }
 ```
 
-| Property         | Type | Required? |  Description                                                                                  | 
+| Property         | Type | Required? |  Description                                                                                  |
 |---------------------|-------|-----------------------------------------------------------------------------------------|-----|
-| `type` | `string` | required | Must be set to `$.interface.timer`  | 
+| `type` | `string` | required | Must be set to `$.interface.timer`  |
 | `default`  | `object` | optional | **Define a default interval**<br>`{ intervalSeconds: 60, },`<br>&nbsp;<br>**Define a default cron expression**<br>` { cron: "0 0 * * *", },`  |
 
 #### Usage
@@ -395,9 +413,9 @@ props: {
 
 #### Definition
 
-| Property         | Type | Required? |  Description                                                                                  | 
+| Property         | Type | Required? |  Description                                                                                  |
 |---------------------|-------|-----------------------------------------------------------------------------------------|-----|
-| `type` | `string` | required | Must be set to `$.interface.http`  | 
+| `type` | `string` | required | Must be set to `$.interface.http`  |
 | `respond`  | `method` | required | The HTTP interface exposes a `respond()` method that lets your component issue HTTP responses to the client.  |
 
 
@@ -410,7 +428,7 @@ props: {
 | `this.myPropName.respond()` | Returns an HTTP response to the client (e.g., `this.http.respond({status: 200})`). | n/a | `run()` |
 
 ##### Responding to HTTP requests
- 
+
 The HTTP interface exposes a `respond()` method that lets your component issue HTTP responses. You **must** run `this.http.respond()` to respond to the client from the `run()` method of a component.
 
 | Property        | Type    | Required? | Description |
@@ -463,9 +481,9 @@ module.exports = {
 
 ## Service Props
 
-| Service         | Description                                                                                  | 
+| Service         | Description                                                                                  |
 |---------------------|----------------------------------------------------------------------------------------------|
-| _DB_ | Provides access to a simple, component-specific key-value store to maintain state across invocations.| 
+| _DB_ | Provides access to a simple, component-specific key-value store to maintain state across invocations.|
 
 
 
@@ -561,9 +579,9 @@ hooks: {
 
 | Strategy       | Description |
 |-------------|----------------|
-| `unique`        | Pipedream maintains a cache of 100 emitted `id` values. Events with `id` values that are not in the cache are emitted, and the `id` value is added to the cache. After 100 events, `id` values are purged from the cache based on the order received (first in, first out). A common use case for this strategy is an RSS feed which typically does not exceed 100 items | 
-| `greatest`        | Pipedream caches the largest `id` value (must be numeric). Only events with larger `id` values are emitted (and the cache is updated to match the new, largest value). | 
-| `last`        | Pipedream caches the ID assocaited with the last emitted event. When new events are emitted, only events after the matching `id` value will be emitted as events. If no `id` values match, then all events will be emitted. | 
+| `unique`        | Pipedream maintains a cache of 100 emitted `id` values. Events with `id` values that are not in the cache are emitted, and the `id` value is added to the cache. After 100 events, `id` values are purged from the cache based on the order received (first in, first out). A common use case for this strategy is an RSS feed which typically does not exceed 100 items |
+| `greatest`        | Pipedream caches the largest `id` value (must be numeric). Only events with larger `id` values are emitted (and the cache is updated to match the new, largest value). |
+| `last`        | Pipedream caches the ID assocaited with the last emitted event. When new events are emitted, only events after the matching `id` value will be emitted as events. If no `id` values match, then all events will be emitted. |
 
 # Run
 
@@ -591,7 +609,41 @@ If the `run` method emits events using `this.$emit`, you can access the events i
 pd events <deployed-component-name>
 ```
 
-# Using npm packages
+## $emit
+
+`this.$emit()` is a method in scope for the `run` method of a component
+
+```javascript
+this.$emit(
+  event,
+  {
+    id,
+    summary,
+    ts,
+  }
+)
+```
+
+| Property  | Type                   | Required?                                | Description                                                  |
+| --------- | ---------------------- | ---------------------------------------- | ------------------------------------------------------------ |
+| `event`   | JSON serializable data | optional                                 | The data to emit as the event                                |
+| `id`      | `string` or `number`   | Required if a dedupe strategy is applied | A value to uniquely identify this event. Common `id` values may be a 3rd party ID, a timestamp, or a data hash |
+| `summary` | `string`               | optional                                 | Define a summary to customize the data displayed in the events list to help differentiate events at a glance |
+| `ts`      | `integer`              | optional                                 | If you submit a timestamp, events will automatically be ordered and emitted from oldest to newest. If using the `last` dedupe strategy, the value cached as the `last` event for an invocation will correspond to the event with the newest timestamp. |
+
+Following is a basic example that emits an event on each component execution.
+
+```javascript
+module.exports = {
+  name: "this.$emit() example",
+  description: "Deploy and run this component manually via the Pipedream UI",
+  async run() {
+    this.$emit({ message: "hello world!" })
+  }
+}
+```
+
+## Using npm packages
 
 To use an npm package in a component, just require it. There is no `package.json` or `npm install` required.
 
