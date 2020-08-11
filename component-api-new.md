@@ -61,7 +61,7 @@ Deploy or contribute to curated open source components in Pipedream's Github rep
 
 The event lifecycle applies to deployed components. Learn about the [component lifecycle](#component-lifecycle).
 
-![image-20200811160828436](images/image-20200811160828436.png)
+![image-20200811161858648](images/image-20200811161858648.png)
 
 ## Triggering Components
 
