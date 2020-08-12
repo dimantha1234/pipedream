@@ -111,7 +111,7 @@ For example, you can use the CLI to retrieve the last 10 events:
 
 # Component Lifecycle
 
-
+![image-20200811175516289](./images/image-20200811175516289.png)
 
 
 
