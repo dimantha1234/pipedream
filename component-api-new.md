@@ -1,32 +1,3 @@
-- [Overview](#overview)
-  * [What is a component?](#what-is-a-component-)
-  * [Quickstart](#quickstart)
-  * [Contributing](#contributing)
-- [Event Lifecycle](#event-lifecycle)
-  * [Triggering Components](#triggering-components)
-  * [Emitting Events](#emitting-events)
-  * [Consuming Events](#consuming-events)
-    + [UI](#ui)
-    + [Workflows](#workflows)
-    + [API](#api)
-    + [CLI](#cli)
-- [Component Lifecycle](#component-lifecycle)
-- [Component Structure](#component-structure)
-- [Props](#props)
-  * [User Input Props](#user-input-props)
-  * [Interface Props](#interface-props)
-    + [Timer](#timer)
-    + [HTTP](#http)
-  * [Service Props](#service-props)
-    + [DB](#db)
-  * [App Props](#app-props)
-  [Methods](#methods)
-- [Hooks](#hooks)
-- [Dedupe Strategies](#dedupe-strategies)
-- [Run](#run)
-  * [$emit](#-emit)
-  * [Using npm packages](#using-npm-packages)
-
 # Overview 
 
 ## What is a component?
@@ -56,6 +27,32 @@ To help you get started, we created a [step-by-step walkthrough](/quickstart.md)
 ## Contributing
 
 Deploy or contribute to curated open source components in Pipedream's Github repo. Or author your own and maintain your code via your standard CI/CD process.
+
+- [Event Lifecycle](#event-lifecycle)
+  * [Triggering Components](#triggering-components)
+  * [Emitting Events](#emitting-events)
+  * [Consuming Events](#consuming-events)
+    + [UI](#ui)
+    + [Workflows](#workflows)
+    + [API](#api)
+    + [CLI](#cli)
+- [Component Lifecycle](#component-lifecycle)
+- [Component Structure](#component-structure)
+- [Props](#props)
+  * [User Input Props](#user-input-props)
+  * [Interface Props](#interface-props)
+    + [Timer](#timer)
+    + [HTTP](#http)
+  * [Service Props](#service-props)
+    + [DB](#db)
+  * [App Props](#app-props)
+  [Methods](#methods)
+- [Hooks](#hooks)
+- [Dedupe Strategies](#dedupe-strategies)
+- [Run](#run)
+  * [$emit](#-emit)
+  * [Using npm packages](#using-npm-packages)
+
 
 # Event Lifecycle
 
@@ -108,32 +105,21 @@ For example, you can use the CLI to retrieve the last 10 events:
 ```
 
 
-
 # Component Lifecycle
+
+Pipedream components support `Activate()` and `Deactivate()` lifecycle hooks. The code for these hooks are defined within the component. Learn more about the [component structure](#component-structure) and [hook usage](#hooks).
 
 ![image-20200812163702984](images/image-20200812163702984.png)
 
-## Component States
-
-### Saved Component
+## Saved Component
 
 A saved component is a component that has been registered on Pipedream but not instantiated. Saved components can be instantiated by deploying them.
 
-### Deployed Component
+## Deployed Component
 
-A deployed component is an instance of a saved component. Deployed components can be active or inactive.
+A deployed component is an instance of a saved component. Deployed components can be active or inactive. On deploy, Pipedream instantiates a saved component and invokes the `Activate()` hook.
 
-### Destroyed Component
-
-If a deployed component is deleted, the component is destroyed.
-
-## Lifecycle Activities
-
-### Deploy
-
-On deploy, Pipedream instantiates a saved component and invokes the `Activate()` hook.
-
-### Update
+You can deploy a component using the CLI, API or UI.
 
 On update, Pipedream:
 
@@ -141,13 +127,9 @@ On update, Pipedream:
 2. Updates a deployed component with the latest code and props
 3. Invokes the `Activate()` hook
 
-### Delete
+## Destroyed Component
 
-On delete, Pipedream invokes the `Deactivate()` hook and then destroys the deployed component.
-
-## Lifecycle Hooks
-
-Pipedream components support `Activate()` and `Deactivate()` lifecycle hooks. The code for these hooks are defined within the component. Learn more about the [component structure](#component-structure) and [hook usage](#hooks).
+If a deployed component is deleted, the component is destroyed. On delete, Pipedream invokes the `Deactivate()` hook and then destroys the deployed component.
 
 # Component Structure
 
