@@ -111,9 +111,43 @@ For example, you can use the CLI to retrieve the last 10 events:
 
 # Component Lifecycle
 
-![image-20200811175516289](./images/image-20200811175516289.png)
+![image-20200812163702984](images/image-20200812163702984.png)
 
+## Component States
 
+### Saved Component
+
+A saved component is a component that has been registered on Pipedream but not instantiated. Saved components can be instantiated by deploying them.
+
+### Deployed Component
+
+A deployed component is an instance of a saved component. Deployed components can be active or inactive.
+
+### Destroyed Component
+
+If a deployed component is deleted, the component is destroyed.
+
+## Lifecycle Activities
+
+### Deploy
+
+On deploy, Pipedream instantiates a saved component and invokes the `Activate()` hook.
+
+### Update
+
+On update, Pipedream:
+
+1. Invokes the `Deactivate()` hook
+2. Updates a deployed component with the latest code and props
+3. Invokes the `Activate()` hook
+
+### Delete
+
+On delete, Pipedream invokes the `Deactivate()` hook and then destroys the deployed component.
+
+## Lifecycle Hooks
+
+Pipedream components support `Activate()` and `Deactivate()` lifecycle hooks. The code for these hooks are defined within the component. Learn more about the [component structure](#component-structure) and [hook usage](#hooks).
 
 # Component Structure
 
@@ -654,3 +688,4 @@ const myVariable = require('npmPackageName')
 When you deploy a component, Pipedream downloads these packages and bundles them with your deployment.
 
 Some packages — for example, packages like [Puppeteer](https://pptr.dev/), which includes large dependencies like Chromium — may not work on Pipedream. Please [reach out](https://docs.pipedream.com/support/) if you encounter a specific issue.
+
