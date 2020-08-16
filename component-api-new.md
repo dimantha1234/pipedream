@@ -61,8 +61,21 @@ To help you get started, we created a [step-by-step walkthrough](/quickstart.md)
 
 ## Contributing
 
-Deploy or contribute to curated open source components in Pipedream's Github repo. Or author your own and maintain your code via your standard CI/CD process.
+Deploy or contribute to curated open source components in Pipedream's Github repo. Or author, deploy and maintain your own via your standard CI/CD process.
 
+## CLI
+
+Some of the examples below use the CLI. To install it, run:
+
+```bash
+curl https://cli.pipedream.com/install | sh
+```
+
+Pipedream publishes a build of the CLI for macOS and Linux (for `386`, `amd64`, `arm`, and `arm64` architectures). If you need to use the CLI on another OS or architecture, [please reach out](https://docs.pipedream.com/support/).
+
+Run `pd` to see a list of all commands, or `pd help <command>` to display help docs for a specific command.
+
+See the [CLI reference](https://docs.pipedream.com/cli/reference/) for detailed usage and examples beyond those covered below.
 
 # Component Lifecycle
 
@@ -72,13 +85,91 @@ Pipedream components support `Activate()` and `Deactivate()` lifecycle hooks. Th
 
 ## Saved Component
 
-A saved component is a component that has been registered on Pipedream but not instantiated. Each saved component has a unique saved component ID. Saved components can be instantiated by deploying them.
+A saved component is non-instantiated component code that has previously been deployed to Pipedream. Each saved component has a unique saved component ID. Saved components cannot be invoked directly — they must first be depoyed.
 
 ## Deployed Component
 
-A deployed component is an instance of a saved component. Deployed components can be active or inactive. On deploy, Pipedream instantiates a saved component and invokes the `Activate()` hook.
+A deployed component is an instance of a saved component that can be invoked. Deployed components can be active or inactive. On deploy, Pipedream instantiates a saved component and invokes the `Activate()` hook.
 
-You can deploy a component using the CLI, API or UI.
+### Creating a deployed component
+
+You can deploy a component using the CLI, UI or API.
+
+#### CLI
+
+To deploy a via CLI, use the `pd deploy` command. 
+
+##### Locally developed component
+
+```bash
+pd deploy <filename>
+```
+
+E.g.,
+
+```bash
+pd deploy my-component.js
+```
+
+##### Component hosted in Pipedream's Github repo
+
+You can explore the components available to deploy in [Pipedream's Github repo](https://github.com/PipedreamHQ/pipedream/tree/master/components).
+
+```bash
+pd deploy <github-url>
+```
+
+E.g.,
+
+```bash
+pd deploy https://github.com/PipedreamHQ/pipedream/blob/master/components/http/http.js
+```
+
+##### Component based on code hosted anywhere
+
+```bash
+pd deploy <url-to-raw-code>
+```
+
+E.g.,
+
+```bash
+pd deploy https://raw.githubusercontent.com/PipedreamHQ/pipedream/master/components/http/http.js
+```
+
+#### UI
+
+##### Component hosted in Pipedream's Github repo
+
+You can explore the components available to deploy in [Pipedream's Github repo](https://github.com/PipedreamHQ/pipedream/tree/master/components).
+
+```bash
+https://pipedream.com/sources?action=create&url=<url-encoded-github-url>
+```
+
+E.g.,
+
+```bash
+https://pipedream.com/sources?action=create&url=https%3A%2F%2Fgithub.com%2FPipedreamHQ%2Fpipedream%2Fblob%2Fmaster%2Fcomponents%2Fhttp%2Fhttp.js
+```
+
+##### Component based on code hosted anywhere
+
+```bash
+https://pipedream.com/sources?action=create&url=<url-encoded-url>
+```
+
+E.g.,
+
+```bash
+https://pipedream.com/sources?action=create&url=https%3A%2F%2Fraw.githubusercontent.com%2FPipedreamHQ%2Fpipedream%2Fmaster%2Fcomponents%2Fhttp%2Fhttp.js
+```
+
+#### API
+
+See the [docs](https://docs.pipedream.com/api/rest/#operations).
+
+### Updating a deployed component
 
 On update, Pipedream:
 
@@ -134,10 +225,7 @@ Events can be retrieved using the [REST API](https://docs.pipedream.com/api/rest
 For example, you can use the CLI to retrieve the last 10 events:
 
 ```
-λ pd events -n 10 <source-name>
-{ name: "Luke Skywalker" }
-{ name: "Leia Organa" }
-{ name: "Han Solo" }
+pd events -n 10 <source-name>
 ```
 
 # Component Structure
@@ -189,7 +277,9 @@ module.exports = {
 
 User input props allow components to accept input on deploy. When deploying a component, users will be prompted to enter values for these props, setting the behavior of the component accordingly.
 
-### Definition
+### General
+
+#### Definition
 
 ```javascript
 props: {
@@ -216,13 +306,13 @@ props: {
 | `default`        | `string` | optional | Define a default value if the field is not completed. Can only be defined for optional fields (required fields require explicit user input) |
 
 
-### Usage
+#### Usage
 
 | Code        | Description    | Read Scope | Write Scope |
 |-------------|----------------|-------------|--------|
 | `this.myPropName` | Returns the configured value of the prop | `run()` `hooks` `methods` | n/a (input props may only be modified on component deploy or update via UI, CLI or API) |
 
-### Example
+#### Example
 
 Following is a basic example that demonstrates how to capture user input via a prop and emit it on each event.
 
@@ -251,8 +341,6 @@ To see more examples, explore the curated components in Pipedream's Github repo.
 
 Async options allow users to select prop values that can be programatically generated (e.g., based on an real-time API response).
 
-##### Definition
-
 ```javascript
 async options({ 
   page,
@@ -266,7 +354,7 @@ async options({
 | `page` | `integer` | optional |  Returns a `0` indexed page number. For use with APIs that accept a numeric page number for pagination. |
 | `prevContext` | `string` | optional | Return a string representing the context for the previous `options` invocation. For use with APIs that accept a token representing the last record for pagination. |
 
-##### Example
+Following is a code example demonstrating the usage of async options.
 
 ```javascript
 module.exports = {
@@ -296,8 +384,6 @@ module.exports = {
 
 Prop definitions enable you to reuse props that are defined in another object. A common use case is to enable re-use of props that are defined for a specific app.
 
-##### Definition
-
 ```javascript
 props: {
   myPropName: { 
@@ -318,9 +404,7 @@ props: {
 | `propDefinitionName` | `string` | required | The name of a specific `propDefinition` defined in the corresponding `app` object |
 | `inputValues` | `object` | optional | Values to pass into the prop definition. To reference values from previous props, use an arrow function. E.g.,:<br>&nbsp;<br>`c => ({ variableName: c.previousPropName })`|
 
-##### Example
-
-Following is a basic example that demonstrates how to use `propDefinitions`.
+Following is a code example that demonstrates how to use `propDefinitions`.
 
 ```javascript
 const rss = {
