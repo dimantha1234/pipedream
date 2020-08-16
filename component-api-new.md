@@ -1,8 +1,43 @@
+- [Overview](#overview)
+  - [What is a component?](#what-is-a-component)
+  - [Quickstart](#quickstart)
+  - [Contributing](#contributing)
+- [Component Lifecycle](#component-lifecycle)
+  - [Saved Component](#saved-component)
+  - [Deployed Component](#deployed-component)
+  - [Destroyed Component](#destroyed-component)
+- [Event Lifecycle](#event-lifecycle)
+  - [Triggering Components](#triggering-components)
+  - [Emitting Events](#emitting-events)
+  - [Consuming Events](#consuming-events)
+    - [UI](#ui)
+    - [Workflows](#workflows)
+    - [API](#api)
+    - [CLI](#cli)
+- [Component Structure](#component-structure)
+- [Props](#props)
+  - [User Input Props](#user-input-props)
+  - [Interface Props](#interface-props)
+    - [Timer](#timer)
+    - [HTTP](#http)
+  - [Service Props](#service-props)
+    - [DB](#db)
+  - [App Props](#app-props)
+- [Methods](#methods)
+- [Hooks](#hooks)
+- [Dedupe Strategies](#dedupe-strategies)
+- [Hooks](#hooks)
+- [Dedupe Strategies](#dedupe-strategies)
+- [Run](#run)
+  * [$emit](#-emit)
+  * [Using npm packages](#using-npm-packages)
+
+
 # Overview 
 
 ## What is a component?
 
-Pipedream components are Node.js modules that run on Pipedream's serverless infrastructure. 
+Components are Node.js modules that run on Pipedream's serverless infrastructure. 
 
 - Trigger Node.js on HTTP requests, timers, cron schedules, or manually
 - Emit data on each event to inspect it, trigger Pipedream hosted workflows or access it outside of Pipedream via API
@@ -28,31 +63,32 @@ To help you get started, we created a [step-by-step walkthrough](/quickstart.md)
 
 Deploy or contribute to curated open source components in Pipedream's Github repo. Or author your own and maintain your code via your standard CI/CD process.
 
-- [Event Lifecycle](#event-lifecycle)
-  * [Triggering Components](#triggering-components)
-  * [Emitting Events](#emitting-events)
-  * [Consuming Events](#consuming-events)
-    + [UI](#ui)
-    + [Workflows](#workflows)
-    + [API](#api)
-    + [CLI](#cli)
-- [Component Lifecycle](#component-lifecycle)
-- [Component Structure](#component-structure)
-- [Props](#props)
-  * [User Input Props](#user-input-props)
-  * [Interface Props](#interface-props)
-    + [Timer](#timer)
-    + [HTTP](#http)
-  * [Service Props](#service-props)
-    + [DB](#db)
-  * [App Props](#app-props)
-  [Methods](#methods)
-- [Hooks](#hooks)
-- [Dedupe Strategies](#dedupe-strategies)
-- [Run](#run)
-  * [$emit](#-emit)
-  * [Using npm packages](#using-npm-packages)
 
+# Component Lifecycle
+
+Pipedream components support `Activate()` and `Deactivate()` lifecycle hooks. The code for these hooks are defined within the component. Learn more about the [component structure](#component-structure) and [hook usage](#hooks).
+
+![image-20200812163702984](images/image-20200812163702984.png) 
+
+## Saved Component
+
+A saved component is a component that has been registered on Pipedream but not instantiated. Each saved component has a unique saved component ID. Saved components can be instantiated by deploying them.
+
+## Deployed Component
+
+A deployed component is an instance of a saved component. Deployed components can be active or inactive. On deploy, Pipedream instantiates a saved component and invokes the `Activate()` hook.
+
+You can deploy a component using the CLI, API or UI.
+
+On update, Pipedream:
+
+1. Invokes the `Deactivate()` hook
+2. Updates a deployed component with the latest code and props
+3. Invokes the `Activate()` hook
+
+## Destroyed Component
+
+If a deployed component is deleted, the component is destroyed. On delete, Pipedream invokes the `Deactivate()` hook and then destroys the deployed component.
 
 # Event Lifecycle
 
@@ -103,33 +139,6 @@ For example, you can use the CLI to retrieve the last 10 events:
 { name: "Leia Organa" }
 { name: "Han Solo" }
 ```
-
-
-# Component Lifecycle
-
-Pipedream components support `Activate()` and `Deactivate()` lifecycle hooks. The code for these hooks are defined within the component. Learn more about the [component structure](#component-structure) and [hook usage](#hooks).
-
-![image-20200812163702984](images/image-20200812163702984.png)
-
-## Saved Component
-
-A saved component is a component that has been registered on Pipedream but not instantiated. Saved components can be instantiated by deploying them.
-
-## Deployed Component
-
-A deployed component is an instance of a saved component. Deployed components can be active or inactive. On deploy, Pipedream instantiates a saved component and invokes the `Activate()` hook.
-
-You can deploy a component using the CLI, API or UI.
-
-On update, Pipedream:
-
-1. Invokes the `Deactivate()` hook
-2. Updates a deployed component with the latest code and props
-3. Invokes the `Activate()` hook
-
-## Destroyed Component
-
-If a deployed component is deleted, the component is destroyed. On delete, Pipedream invokes the `Deactivate()` hook and then destroys the deployed component.
 
 # Component Structure
 
@@ -269,6 +278,7 @@ module.exports = {
       label: "Message",
       description: "Select a message to `console.log()`",
       async options() {
+        // write any node code that returns a string[] or object[] (with label/value keys)
         return [
           'This is option 1',
           'This is option 2',
@@ -601,7 +611,7 @@ hooks: {
 
 # Run
 
-Each time a component is [invoked](#how-components-run) (for example, via HTTP request), its `run` method is called.
+Each time a component is invoked (for example, via HTTP request), its `run` method is called.
 
 The event that triggered the component is passed to `run`, so that you can access it within the method:
 
