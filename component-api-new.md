@@ -14,7 +14,6 @@ This document is a reference for Pipedream's component API. Please raise an issu
     - [Deploy](#deploy)
     - [Update](#update)
     - [Delete](#delete)
-  - [Hooks](#hooks)
   - [Management](#management)
     - [CLI](#cli)
       - [Development Mode](#development-mode)
@@ -56,7 +55,7 @@ This document is a reference for Pipedream's component API. Please raise an issu
       - [DB](#db)
     - [App Props](#app-props)
   - [Methods](#methods)
-  - [Hooks](#hooks-1)
+  - [Hooks](#hooks)
   - [Dedupe Strategies](#dedupe-strategies)
   - [Run](#run)
     - [$emit](#emit)
@@ -138,10 +137,6 @@ On update, Pipedream, invokes the optional `Deactivate()` hook, updates the code
 ### Delete
 
 On delete, Pipedream invokes the optional `Deactivate()` hook and deletes the component instance.
-
-## Hooks
-
-Hooks are methods custom to each component that are invoked by Pipedream when deploying, updating and deleting components. Hooks are [futher defined below](#hooks) in the API documentation.
 
 ## Management
 
