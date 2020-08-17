@@ -1,4 +1,6 @@
-After completing this walkthrough, you will understand how to:
+# Quickstart: Creating Pipedream Components
+
+After completing this quickstart, you will understand how to:
 
 - Deploy components to Pipedream using the CLI
 - Invoke a component manually, or on a schedule or HTTP request
@@ -9,21 +11,42 @@ After completing this walkthrough, you will understand how to:
 
 We recommend that you execute the examples in order — each one builds on the concepts and practices of earlier examples. 
 
-# Contents
+- [Quickstart Examples](#quickstart-examples)
+- [Prerequisites](#prerequisites)
+- [CLI Development Mode](#cli-development-mode)
+- [Hello World!](#hello-world)
+    - [Maintain state across invocations](#maintain-state-across-invocations)
+    - [Invoke your code on a schedule](#invoke-your-code-on-a-schedule)
+    - [Invoke your code on HTTP requests](#invoke-your-code-on-http-requests)
+- [Emit new RSS items on a schedule (~10 mins)](#emit-new-rss-items-on-a-schedule-10-mins)
+  - [Emit items in an RSS Feed](#emit-items-in-an-rss-feed)
+  - [Add an optional summary for each emitted event](#add-an-optional-summary-for-each-emitted-event)
+  - [Only Emit New Items in the  RSS Feed](#only-emit-new-items-in-the-rss-feed)
+  - [Add a timer interface to invoke the component on a schedule](#add-a-timer-interface-to-invoke-the-component-on-a-schedule)
+- [Use managed auth to pull data from Github (~10 mins)](#use-managed-auth-to-pull-data-from-github-10-mins)
+  - [Get issues for a repo](#get-issues-for-a-repo)
+  - [Dedupe the events](#dedupe-the-events)
+  - [Add a timer to run on a schedule](#add-a-timer-to-run-on-a-schedule)
+- [What's Next?](#whats-next)
+
+# Quickstart Examples
 
 **Hello World! (~10 minutes)**
+
 - Deploy a `hello world!` component using the Pipedream CLI and invoke it manually
 - Use `$.service.db` to maintain state across invocations
 - Use `$.interface.timer` to invoke a component on a schedule
 - Use `$.interface.http` to invoke code on HTTP requests
 
 **Emit new RSS items on a schedule (~10 mins)**
+
 - Use the `rss-parser` npm package to retrive an RSS feed and emit each item
 - Display a custom summary for each emitted item in the event list 
 - Use the `unique` deduping strategy so we only emit new items from the RSS feed
 - Add a timer interface to run the component on a schedule
 
 **Poll for new Github issues (~10 mins)**
+
 - Use Pipedream managed OAuth with Github's API to retrieve issues for a repo
 - Use the `greatest` deduping strategy to only emit new issues
 
@@ -32,9 +55,31 @@ We recommend that you execute the examples in order — each one builds on the 
 
 1. Create a free account at https://pipedream.com. Just sign in with your Google or Github account.
 2. Install the Pipedream CLI
-```
+```bash
 curl https://cli.pipedream.com/install | sh
 ```
+
+Pipedream publishes a build of the CLI for macOS and Linux (for `386`, `amd64`, `arm`, and `arm64` architectures). If you need to use the CLI on another OS or architecture, [please reach out](https://docs.pipedream.com/support/).
+
+Once the CLI is installed, log into Pipedream:
+
+```bash
+pd login
+```
+
+See the [CLI reference](https://docs.pipedream.com/cli/reference/) for detailed usage and examples beyond those covered below.
+
+# CLI Development Mode
+
+The examples in this guide use the  `pd dev` command. This command will deploy your code in "development mode". What that means is that the CLI will attach to the deployed component and watch your local file for changes — when you save changes to your local file, your component will automatically be updated on Pipedream (the alternative is to `pd deploy` and run `pd update` for each change).
+
+If your `pd dev` session is terminated and you need to re-attach to a deployed component, run the following command.
+
+```bash
+pd dev [--dc <existing-deployed-component-id>] <file-or-name>
+```
+
+See the [CLI reference](https://docs.pipedream.com/cli/reference/) for detailed usage and examples beyond those covered below.
 
 # Hello World!
 
@@ -71,7 +116,7 @@ Open the URL returned by the CLI (`https://pipedream.com/sources/dc_v3uXKz` in t
 
 Then click **RUN NOW** to invoke your source. Your event will appear in real-time, and you can select it to inspect the emitted data.
 
-![source](/images/quickstart/hello-world-1.gif)
+![source](./images/quickstart/hello-world-1.gif)
 
 ### Maintain state across invocations
 
@@ -121,21 +166,19 @@ module.exports = {
 }
 ```
 
-Save the changes to your local file. Your component on Pipedream should automaticaly update. Then, return to the Pipedream UI and press **RUN NOW** — you should see the invocation count appear in the event list.
+Save the changes to your local file. Your component on Pipedream should automaticaly update. Return to the Pipedream UI and press **RUN NOW** — you should see the invocation count appear in the event list.
 
-![source](/images/quickstart/hello-world-2.gif)
+![source](./images/quickstart/hello-world-2.gif)
 
 ### Invoke your code on a schedule
 
-Next, we'll update our component so it runs on a schedule. To do that, we'll use Pipedream's `timer` interface and we'll set the default execution interval to 15 seconds:
+Next, we'll update our component so it runs on a schedule. To do that, we'll use Pipedream's `timer` interface and we'll set the default execution interval to 15 seconds by adding the following code to props:
 
-```javascript
-props: {
-  timer: {
-    type: "$.interface.timer",
-    default: {
-      intervalSeconds: 15,
-    },
+```
+timer: {
+  type: "$.interface.timer",
+  default: {
+    intervalSeconds: 15,
   },
 },
 ```
@@ -179,7 +222,7 @@ Next, we'll update our component to run on HTTP requests instead of a timer. To 
 http: "$.interface.http",
 ```
 
-In addition, we'll update the funtcion signature pass in the HTTP event so we can reference it in our code:
+In addition, we'll update the function signature pass in the HTTP event so we can reference it in our code:
 
 ```javascript
 async run(event) {
@@ -241,9 +284,9 @@ curl -d '{ "message": "hello world!" }' \
   "INSERT-YOUR-ENDPONT-URL-HERE"
 ```
 
-![source](/images/quickstart/hello-world-4.gif)
+![source](./images/quickstart/hello-world-4.gif)
 
-# Part 2: Emit new RSS items on a schedule (~10 mins)
+# Emit new RSS items on a schedule (~10 mins)
 
 Next, let's cover some real-world examples starting with RSS. Continue editing the same file, but start with the following scaffolding for this  example.
 
@@ -424,7 +467,7 @@ module.exports = {
 **Save** your component then return to the UI and reload the page. You should see the updated configuration on your summary card and a countdown to the next invocation. You can still click **RUN NOW** to execute  your source manually.
 
 
-# Part 3: Use managed auth to pull data from Github (~10 mins)
+# Use managed auth to pull data from Github (~10 mins)
 
 In the last example, we were able to retrieve data to emit wihtout any authentication. Now we'll use Pipedream managed auth to retrieve and emit data from the Github API (which uses OAuth for authentication). Similar to the last example, continue editing the same file, but start with the following scaffolding:
 
@@ -445,18 +488,18 @@ First, require axios so we can make a request to the Github REST API:
 let axios = require('axios')
 ```
 
-Next, let's add an **app prop**, which will enable us to use Pipedream managed auth with this component. You will be prompted to select a connected account (or connect a new one) when you deploy (or update) this component.
+Next, let's add an **app prop**, which will enable us to use Pipedream managed auth with this component. For this example, we'll add Github: 
 
 ```javascript
-props: {
-  github: {
-    type: "app",
-    app: "github",
-  }
-},
+github: {
+  type: "app",
+  app: "github",
+}
 ```
 
-> **Note:** The value for the `app` property is the name slug for the app in Pipedream. This is not currently discoverable, but it will be in the near future. For the time being, if you want to know how to reference an app, please reach our on our public Slack.
+**IMPORTANT: The CLI will prompt you to select a connected account (or connect a new one) when you deploy (or update) this component.**
+
+> **Note:** The value for the `app` property is the name slug for the app in Pipedream. This is not currently discoverable, but it will be in the near future. For the time being, if you want to know how to reference an app, please reach out on our public Slack.
 
 Finally, we'll update the `run()` method to fetch issues from Github using `axios` and emit them. Notice that we're passing the `oauth_access_token` in the authorization header by referencing the app prop `this.github.$auth.oauth_access_token`. Also, similar to the RSS example, it's important that you use the `pddemo/demo` repo so you can test the next dedupe strategy.
 
@@ -504,19 +547,19 @@ module.exports = {
 }
 ```
 
-Save, load the Pipedrem UI, and click **RUN NOW**. You component should emit 30 issues.
+Next save your changes and go to the terminal where you ran `pd dev` **— follow the CLI prompts to select a connected account for Github (or connect a new one)**. Then load the Pipedrem UI, and click **RUN NOW**. You component should emit 30 issues.
 
 ## Dedupe the events
 
 In the RSS example, we deduped the emitted events based on the `unique` strategy. The limitation of the uniique strategy is that it will only maintain uniqueness for 100 items. Since Github issues have incresing numeric IDs, we can use the `greatest` strategy to filter for new issues.
 
-To use this strategy, we first have to deeclare it.
+To use this strategy, we first have to declare it.
 
 ```javascript
 dedupe: "greatest".
 ```
 
-Then, we need to pass the numeric ID for each issue to `this.$emit()`. We can also add a summary and a timestamp (based date/time  when the issue was created). Note: when you add a timestamp, Pipedream will automatically emit events from oldest to newest.
+Then, we need to pass the numeric ID for each issue to `this.$emit()`. We can also add a summary and a timestamp (based on the date/time when the issue was created). Note: when you add a timestamp, Pipedream will automatically emit events from oldest to newest.
 
 ```javascript
 response.data.forEach(issue => {
@@ -619,9 +662,9 @@ module.exports = {
 
 Save and reload your source in the Pipedream UI. You should now see a countdown timer to the next execution.
 
-# Congrats!
+# What's Next?
 
-You're ready to start authoring and deploying components on Pipedream! You can also check out this [quick reference](quickreference.md) at any time!
+You're ready to start authoring and deploying components on Pipedream! You can also check out the [detailed component reference](./component-api.md) at any time!
 
-If you have any questions or feedback, please reach out to support@pipedream.com or join our [public Slack](https://pipedream.com/community). 
+If you have any questions or feedback, please join our [public Slack](https://pipedream.com/community). 
 
