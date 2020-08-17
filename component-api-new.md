@@ -1,7 +1,7 @@
 # Reference: Pipedream Components
 
 This document was created to help developers author and use Pipedream components. Please raise an issue or PR in this repo if you notice something out-of-date.  
-
+ 
 - [Overview](#overview)
   - [What is a component?](#what-is-a-component)
   - [Quickstart](#quickstart)
@@ -17,6 +17,9 @@ This document was created to help developers author and use Pipedream components
     - [Deploy](#deploy)
     - [Update](#update)
     - [Delete](#delete)
+  - [Hooks](#hooks)
+    - [Activate](#activate)
+    - [Deactivate](#deactivate)
   - [Management](#management)
     - [CLI](#cli)
       - [Development Mode](#development-mode)
@@ -59,7 +62,7 @@ This document was created to help developers author and use Pipedream components
       - [DB](#db)
     - [App Props](#app-props)
   - [Methods](#methods)
-  - [Hooks](#hooks)
+  - [Hooks](#hooks-1)
   - [Dedupe Strategies](#dedupe-strategies)
   - [Run](#run)
     - [$emit](#emit)
@@ -143,6 +146,16 @@ On update, Pipedream, invokes the optional `Deactivate()` hook, updates the code
 ### Delete
 
 On delete, Pipedream invokes the optional `Deactivate()` hook and deletes the component instance.
+
+## Hooks
+
+### Activate
+
+The `Activate()` hook is automatically invoked by Pipedream when a component is deployed or updated. A common use case for the activate hook is to automate webhook subscriptions, but you can run any valid code. To learn more about defining a custom `Activate()` hook, refer to the [API documentation](#hooks-1). 
+
+### Deactivate
+
+The `Deactivate()` hook is automatically invoked by Pipedream when a component is updated or deleted. A common use case for the deactivate hook is to automatically delete a webhook subscription when a component is deleted, but you can run any valid code. To learn more about defining a custom `Deactivate()` hook, refer to the [API documentation](#hooks-1). 
 
 ## Management
 
