@@ -1,8 +1,8 @@
 - [Overview](#overview)
   - [What is a component?](#what-is-a-component)
   - [Quickstart](#quickstart)
-  - [Contributing](#contributing)
   - [Installing the CLI](#installing-the-cli)
+  - [Contributing](#contributing)
 - [Component Lifecycle](#component-lifecycle)
   - [States](#states)
     - [Saved Component](#saved-component)
@@ -82,10 +82,6 @@ To help you get started, we created a [step-by-step walkthrough](/quickstart.md)
 - Use Pipedream managed OAuth for an app
 - Use npm packages in components
 
-## Contributing
-
-Deploy or contribute to curated open source components in Pipedream's Github repo. Or author, deploy and maintain your own via your standard CI/CD process.
-
 ## Installing the CLI
 
 Several examples below use the CLI. To install it, run:
@@ -97,6 +93,10 @@ curl https://cli.pipedream.com/install | sh
 Pipedream publishes a build of the CLI for macOS and Linux (for `386`, `amd64`, `arm`, and `arm64` architectures). If you need to use the CLI on another OS or architecture, [please reach out](https://docs.pipedream.com/support/).
 
 See the [CLI reference](https://docs.pipedream.com/cli/reference/) for detailed usage and examples beyond those covered below.
+
+## Contributing
+
+Deploy or contribute to curated open source components in Pipedream's Github repo. Or author, deploy and maintain your own via your standard CI/CD process.
 
 # Component Lifecycle
 
