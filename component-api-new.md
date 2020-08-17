@@ -6,6 +6,7 @@ This document is a reference for Pipedream's component API. Please raise an issu
   - [Installing the CLI](#installing-the-cli)
   - [Contributing](#contributing)
 - [Component Lifecycle](#component-lifecycle)
+  - [Diagram](#diagram)
   - [States](#states)
     - [Saved Component](#saved-component)
     - [Deployed Component](#deployed-component)
@@ -31,6 +32,7 @@ This document is a reference for Pipedream's component API. Please raise an issu
       - [Delete](#delete-2)
     - [API](#api)
 - [Event Lifecycle](#event-lifecycle)
+  - [Diagram](#diagram-1)
   - [Triggering Components](#triggering-components)
   - [Emitting Events](#emitting-events)
   - [Consuming Events](#consuming-events)
@@ -104,11 +106,13 @@ Deploy or contribute to curated open source components in Pipedream's Github rep
 
 # Component Lifecycle
 
+## Diagram
+
+![image-20200812163702984](images/image-20200812163702984.png)
+
 ## States
 
 Pipedream components support `Activate()` and `Deactivate()` lifecycle hooks. The code for these hooks are defined within the component. Learn more about the [component structure](#component-structure) and [hook usage](#hooks).
-
-![image-20200812163702984](images/image-20200812163702984.png) 
 
 ### Saved Component
 
@@ -250,6 +254,8 @@ See the [docs](https://docs.pipedream.com/api/rest/#operations).
 # Event Lifecycle
 
 The event lifecycle applies to deployed components. Learn about the [component lifecycle](#component-lifecycle).
+
+## Diagram
 
 ![image-20200811161858648](images/image-20200811161858648.png)
 
