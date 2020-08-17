@@ -8,27 +8,30 @@
     - [Saved Component](#saved-component)
     - [Deployed Component](#deployed-component)
     - [Destroyed Component](#destroyed-component)
-  - [Managing](#managing)
-    - [Development Mode](#development-mode)
+  - [Actions](#actions)
     - [Deploy](#deploy)
-      - [CLI](#cli)
+    - [Update](#update)
+    - [Delete](#delete)
+  - [Management](#management)
+    - [Via CLI](#via-cli)
+      - [Development Mode](#development-mode)
+      - [Deploy](#deploy-1)
         - [From Local Code](#from-local-code)
         - [From Pipedream Github Repo](#from-pipedream-github-repo)
         - [From Any Hosted Code](#from-any-hosted-code)
-      - [UI](#ui)
-        - [Deploy from Pipedream Github Repo](#deploy-from-pipedream-github-repo)
-        - [Deploy Hosted Code](#deploy-hosted-code)
-      - [API](#api)
-    - [Update](#update)
-    - [Delete](#delete)
+    - [Via UI](#via-ui)
+      - [Deploy](#deploy-2)
+        - [From Pipedream Github Repo](#from-pipedream-github-repo-1)
+        - [From Any Hosted Code](#from-any-hosted-code-1)
+    - [Via API](#via-api)
 - [Event Lifecycle](#event-lifecycle)
   - [Triggering Components](#triggering-components)
   - [Emitting Events](#emitting-events)
   - [Consuming Events](#consuming-events)
-    - [UI](#ui-1)
+    - [UI](#ui)
     - [Workflows](#workflows)
-    - [API](#api-1)
-    - [CLI](#cli-1)
+    - [API](#api)
+    - [CLI](#cli)
 - [Component API](#component-api)
   - [Component Structure](#component-structure)
   - [Props](#props)
@@ -115,9 +118,29 @@ A deployed component is an instance of a saved component that can be invoked. De
 
 If a deployed component is deleted, the component is destroyed. On delete, Pipedream invokes the `Deactivate()` hook and then destroys the deployed component.
 
-## Managing
+## Actions
 
-### Development Mode
+### Deploy
+
+blah blah blah
+
+### Update
+
+On update, Pipedream:
+
+1. Invokes the `Deactivate()` hook
+2. Updates a deployed component with the latest code and props
+3. Invokes the `Activate()` hook
+
+### Delete
+
+On delete, Pipedrea
+
+## Management
+
+### Via CLI
+
+#### Development Mode
 
 The easiest way to develop and iteratively test is to use the `pd dev` command tol deploy a local file, attach to a component, and automatically update the component on each local save. To deploy a new component with `pd dev`, run:
 
@@ -131,9 +154,7 @@ To attach to an existing deployed component, run:
 pd dev [--dc <existing-deployed-component-id>] <file-or-name>
 ```
 
-### Deploy
-
-#### CLI
+#### Deploy
 
 ##### From Local Code
 
@@ -175,11 +196,11 @@ E.g.,
 pd deploy https://raw.githubusercontent.com/PipedreamHQ/pipedream/master/components/http/http.js
 ```
 
-#### UI
+### Via UI
 
-##### Deploy from Pipedream Github Repo
+#### Deploy
 
-You can explore the components available to deploy in [Pipedream's Github repo](https://github.com/PipedreamHQ/pipedream/tree/master/components).
+##### From Pipedream Github Repo
 
 ```bash
 https://pipedream.com/sources?action=create&url=<url-encoded-github-url>
@@ -191,7 +212,7 @@ E.g.,
 https://pipedream.com/sources?action=create&url=https%3A%2F%2Fgithub.com%2FPipedreamHQ%2Fpipedream%2Fblob%2Fmaster%2Fcomponents%2Fhttp%2Fhttp.js
 ```
 
-##### Deploy Hosted Code
+##### From Any Hosted Code
 
 ```bash
 https://pipedream.com/sources?action=create&url=<url-encoded-url>
@@ -203,21 +224,10 @@ E.g.,
 https://pipedream.com/sources?action=create&url=https%3A%2F%2Fraw.githubusercontent.com%2FPipedreamHQ%2Fpipedream%2Fmaster%2Fcomponents%2Fhttp%2Fhttp.js
 ```
 
-#### API
+### Via API
 
 See the [docs](https://docs.pipedream.com/api/rest/#operations).
 
-### Update
-
-On update, Pipedream:
-
-1. Invokes the `Deactivate()` hook
-2. Updates a deployed component with the latest code and props
-3. Invokes the `Activate()` hook
-
-### Delete
-
-On update, Pipedrea
 
 # Event Lifecycle
 
