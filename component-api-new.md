@@ -15,8 +15,6 @@ This document is a reference for Pipedream's component API. Please raise an issu
     - [Update](#update)
     - [Delete](#delete)
   - [Hooks](#hooks)
-    - [Activate](#activate)
-    - [Deactivate](#deactivate)
   - [Management](#management)
     - [CLI](#cli)
       - [Development Mode](#development-mode)
@@ -143,9 +141,7 @@ On delete, Pipedream invokes the optional `Deactivate()` hook and deletes the co
 
 ## Hooks
 
-### Activate
-
-### Deactivate
+Hooks are methods custom to each component that are invoked by Pipedream when deploying, updating and deleting components. Hooks are [futher defined below](#hooks) in the API documentation.
 
 ## Management
 
