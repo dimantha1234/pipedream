@@ -2,35 +2,52 @@
   - [What is a component?](#what-is-a-component)
   - [Quickstart](#quickstart)
   - [Contributing](#contributing)
+  - [Local Development](#local-development)
 - [Component Lifecycle](#component-lifecycle)
   - [Saved Component](#saved-component)
   - [Deployed Component](#deployed-component)
+    - [Creating a deployed component](#creating-a-deployed-component)
+      - [CLI](#cli)
+        - [Locally developed component](#locally-developed-component)
+          - [Development Mode](#development-mode)
+          - [One-Time Deploy](#one-time-deploy)
+        - [Component hosted in Pipedream's Github repo](#component-hosted-in-pipedreams-github-repo)
+        - [Component based on code hosted anywhere](#component-based-on-code-hosted-anywhere)
+      - [UI](#ui)
+        - [Component hosted in Pipedream's Github repo](#component-hosted-in-pipedreams-github-repo-1)
+        - [Component based on code hosted anywhere](#component-based-on-code-hosted-anywhere-1)
+      - [API](#api)
+    - [Updating a deployed component](#updating-a-deployed-component)
   - [Destroyed Component](#destroyed-component)
 - [Event Lifecycle](#event-lifecycle)
   - [Triggering Components](#triggering-components)
   - [Emitting Events](#emitting-events)
   - [Consuming Events](#consuming-events)
-    - [UI](#ui)
+    - [UI](#ui-1)
     - [Workflows](#workflows)
-    - [API](#api)
-    - [CLI](#cli)
+    - [API](#api-1)
+    - [CLI](#cli-1)
 - [Component Structure](#component-structure)
 - [Props](#props)
   - [User Input Props](#user-input-props)
+    - [General](#general)
+    - [Advanced Configuration](#advanced-configuration)
+      - [Asyc Options (example)](#asyc-options-example)
+      - [Prop Definitions (example)](#prop-definitions-example)
   - [Interface Props](#interface-props)
     - [Timer](#timer)
     - [HTTP](#http)
+      - [Responding to HTTP requests](#responding-to-http-requests)
+      - [HTTP Event Shape](#http-event-shape)
   - [Service Props](#service-props)
     - [DB](#db)
   - [App Props](#app-props)
 - [Methods](#methods)
 - [Hooks](#hooks)
 - [Dedupe Strategies](#dedupe-strategies)
-- [Hooks](#hooks)
-- [Dedupe Strategies](#dedupe-strategies)
 - [Run](#run)
-  * [$emit](#-emit)
-  * [Using npm packages](#using-npm-packages)
+  - [$emit](#emit)
+  - [Using npm packages](#using-npm-packages)
 
 
 # Overview 
@@ -63,17 +80,15 @@ To help you get started, we created a [step-by-step walkthrough](/quickstart.md)
 
 Deploy or contribute to curated open source components in Pipedream's Github repo. Or author, deploy and maintain your own via your standard CI/CD process.
 
-## CLI
+## Local Development
 
-Some of the examples below use the CLI. To install it, run:
+You can develop components locally and deploy via the CLI. To install it, run:
 
 ```bash
 curl https://cli.pipedream.com/install | sh
 ```
 
 Pipedream publishes a build of the CLI for macOS and Linux (for `386`, `amd64`, `arm`, and `arm64` architectures). If you need to use the CLI on another OS or architecture, [please reach out](https://docs.pipedream.com/support/).
-
-Run `pd` to see a list of all commands, or `pd help <command>` to display help docs for a specific command.
 
 See the [CLI reference](https://docs.pipedream.com/cli/reference/) for detailed usage and examples beyond those covered below.
 
@@ -100,6 +115,22 @@ You can deploy a component using the CLI, UI or API.
 To deploy a via CLI, use the `pd deploy` command. 
 
 ##### Locally developed component
+
+###### Development Mode
+
+The easiest way to develop and iteratively test is to use the `pd dev` command tol deploy a local file, attach to a component, and automatically update the component on each local save. To deploy a new component with `pd dev`, run:
+
+```bash
+pd dev <filename>
+```
+
+To attach to an existing deployed component, run:
+
+```bash
+pd dev [--dc <existing-deployed-component-id>] <file-or-name>
+```
+
+###### One-Time Deploy
 
 ```bash
 pd deploy <filename>
@@ -279,7 +310,7 @@ User input props allow components to accept input on deploy. When deploying a co
 
 ### General
 
-#### Definition
+**Definition**
 
 ```javascript
 props: {
@@ -306,13 +337,13 @@ props: {
 | `default`        | `string` | optional | Define a default value if the field is not completed. Can only be defined for optional fields (required fields require explicit user input) |
 
 
-#### Usage
+**Usage**
 
 | Code        | Description    | Read Scope | Write Scope |
 |-------------|----------------|-------------|--------|
 | `this.myPropName` | Returns the configured value of the prop | `run()` `hooks` `methods` | n/a (input props may only be modified on component deploy or update via UI, CLI or API) |
 
-#### Example
+**Example**
 
 Following is a basic example that demonstrates how to capture user input via a prop and emit it on each event.
 
@@ -446,7 +477,7 @@ Interface props are infrastructure abstractions provided by the Pipedream platfo
 
 To use the timer interface, declare a prop whose value is the string $.interface.timer:
 
-#### Definition
+**Definition**
 
 ```javascript
 props: {
@@ -462,14 +493,14 @@ props: {
 | `type` | `string` | required | Must be set to `$.interface.timer`  |
 | `default`  | `object` | optional | **Define a default interval**<br>`{ intervalSeconds: 60, },`<br>&nbsp;<br>**Define a default cron expression**<br>` { cron: "0 0 * * *", },`  |
 
-#### Usage
+**Usage**
 
 | Code        | Description    | Read Scope | Write Scope |
 |-------------|----------------|-------------|--------|
 | `this.myPropName` | Returns the type of interface configured (e.g., `{ type: '$.interface.timer' }`) | `run()` `hooks` `methods` | n/a (interface props may only be modified on component deploy or update via UI, CLI or API) |
 | `event` | Returns an object with the invocation timestamp and interface configuration (e.g., `{ "timestamp": 1593937896, "interval_seconds": 3600 }`) | `run(event)` | n/a (interface props may only be modified on component deploy or update via UI, CLI or API) |
 
-#### Example
+**Example**
 
 Following is a basic example of a component that is triggered by a `$.interface.timer` and has default defined as a cron expression.
 
@@ -521,7 +552,7 @@ props: {
 }
 ```
 
-#### Definition
+**Definition**
 
 | Property         | Type | Required? |  Description                                                                                  |
 |---------------------|-------|-----------------------------------------------------------------------------------------|-----|
@@ -529,7 +560,7 @@ props: {
 | `respond`  | `method` | required | The HTTP interface exposes a `respond()` method that lets your component issue HTTP responses to the client.  |
 
 
-#### Usage
+**Usage**
 
 | Code        | Description    | Read Scope | Write Scope |
 |-------------|----------------|-------------|--------|
@@ -537,7 +568,7 @@ props: {
 | `event` | Returns an object representing the HTTP request (e.g., `{ method: 'POST', path: '/', query: {}, headers: {}, bodyRaw: '', body: }`) | `run(event)` | The shape of `event` corresponds with the the HTTP request you make to the endpoint generated by Pipedream for this interface |
 | `this.myPropName.respond()` | Returns an HTTP response to the client (e.g., `this.http.respond({status: 200})`). | n/a | `run()` |
 
-##### Responding to HTTP requests
+#### Responding to HTTP requests
 
 The HTTP interface exposes a `respond()` method that lets your component issue HTTP responses. You **must** run `this.http.respond()` to respond to the client from the `run()` method of a component.
 
@@ -548,7 +579,7 @@ The HTTP interface exposes a `respond()` method that lets your component issue H
 | `body`    | `string` `object` `buffer` | optional | Return a custom body in the HTTP response. This can be any string, object, or Buffer.  |
 
 
-##### HTTP Event Shape
+#### HTTP Event Shape
 
 Following is the shape of the event passed to the `run()` method of your component.
 
@@ -563,7 +594,7 @@ Following is the shape of the event passed to the `run()` method of your compone
 }
 ```
 
-#### Example
+**Example**
 
 Following is a basic example of a component that is triggered by `$.interface.http` and returns `{ 'msg': 'hello world!' }` in the HTTP response. On deploy, Pipedream will generate a unique URL to run this component.
 
@@ -599,7 +630,7 @@ module.exports = {
 
 ### DB
 
-#### Definition
+**Definition**
 
 ```javascript
 props: {
@@ -607,7 +638,7 @@ props: {
 }
 ```
 
-#### Usage
+**Usage**
 
 | Code        | Description    | Read Scope | Write Scope |
 |-------------|----------------|-------------|--------|
@@ -617,7 +648,7 @@ props: {
 
 ## App Props
 
-### Definition 
+**Definition**
 
 ```javascript
 props: {
@@ -638,7 +669,7 @@ props: {
 | `methods`        | `object` | optional | Define app-specific methods. Methods can be referenced within the app object context via `this` (e.g., `this.methodName()`) and within a component via `this.myAppPropName` (e.g., `this.myAppPropName.methodName()`). |
 
 
-### Usage
+**Usage**
 
 | Code        | Description    | Read Scope | Write Scope |
 |-------------|----------------|-------------|--------|
