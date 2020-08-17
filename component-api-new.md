@@ -10,7 +10,7 @@ This document is a reference for Pipedream's component API. Please raise an issu
   - [States](#states)
     - [Saved Component](#saved-component)
     - [Deployed Component](#deployed-component)
-    - [Destroyed Component](#destroyed-component)
+    - [Deleted Component](#deleted-component)
   - [Operations](#operations)
     - [Deploy](#deploy)
     - [Update](#update)
@@ -21,13 +21,13 @@ This document is a reference for Pipedream's component API. Please raise an issu
       - [Deploy](#deploy-1)
         - [From Local Code](#from-local-code)
         - [From Pipedream Github Repo](#from-pipedream-github-repo)
-        - [From Any Hosted Code](#from-any-hosted-code)
+        - [From Any URL](#from-any-url)
       - [Update](#update-1)
       - [Delete](#delete-1)
     - [UI](#ui)
       - [Deploy](#deploy-2)
         - [From Pipedream Github Repo](#from-pipedream-github-repo-1)
-        - [From Any Hosted Code](#from-any-hosted-code-1)
+        - [From Any URL](#from-any-url-1)
       - [Update](#update-2)
       - [Delete](#delete-2)
     - [API](#api)
@@ -122,9 +122,9 @@ A saved component is non-instantiated component code that has previously been de
 
 A deployed component is an instance of a saved component that can be invoked. Deployed components can be active or inactive. On deploy, Pipedream instantiates a saved component and invokes the `Activate()` hook.
 
-### Destroyed Component
+### Deleted Component
 
-If a deployed component is deleted, the component is destroyed. On delete, Pipedream invokes the `Deactivate()` hook and then destroys the deployed component.
+On delete, Pipedream invokes the `Deactivate()` hook and then deletes the deployed component instance.
 
 ## Operations
 
@@ -190,7 +190,7 @@ E.g.,
 pd deploy https://github.com/PipedreamHQ/pipedream/blob/master/components/http/http.js
 ```
 
-##### From Any Hosted Code
+##### From Any URL
 
 ```bash
 pd deploy <url-to-raw-code>
@@ -204,15 +204,17 @@ pd deploy https://raw.githubusercontent.com/PipedreamHQ/pipedream/master/compone
 
 #### Update
 
-Update content here...
+View the [CLI command reference](https://docs.pipedream.com/cli/reference/#command-reference).
 
 #### Delete
 
-Delete content here...
+View the [CLI command reference](https://docs.pipedream.com/cli/reference/#command-reference).
 
 ### UI
 
 #### Deploy
+
+You can find any deploy curated components at https://pipedream.com/sources/new, or you can deploy code via the UI using following URL patterns.
 
 ##### From Pipedream Github Repo
 
@@ -226,7 +228,7 @@ E.g.,
 https://pipedream.com/sources?action=create&url=https%3A%2F%2Fgithub.com%2FPipedreamHQ%2Fpipedream%2Fblob%2Fmaster%2Fcomponents%2Fhttp%2Fhttp.js
 ```
 
-##### From Any Hosted Code
+##### From Any URL
 
 ```bash
 https://pipedream.com/sources?action=create&url=<url-encoded-url>
@@ -240,11 +242,11 @@ https://pipedream.com/sources?action=create&url=https%3A%2F%2Fraw.githubusercont
 
 #### Update
 
-Update content here...
+You can update the code and props for a component from the configuration tab for a source in the Pipedream UI.
 
 #### Delete
 
-Delete content here...
+You can delete a component via the UI at https://pipedream.com/sources.
 
 ### API
 
