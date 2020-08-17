@@ -2,23 +2,24 @@
   - [What is a component?](#what-is-a-component)
   - [Quickstart](#quickstart)
   - [Contributing](#contributing)
-  - [Local Development](#local-development)
+  - [CLI](#cli)
 - [Component Lifecycle](#component-lifecycle)
-  - [Saved Component](#saved-component)
-  - [Deployed Component](#deployed-component)
-    - [Creating a deployed component](#creating-a-deployed-component)
-      - [CLI](#cli)
-        - [Locally developed component](#locally-developed-component)
-          - [Development Mode](#development-mode)
-          - [One-Time Deploy](#one-time-deploy)
-        - [Component hosted in Pipedream's Github repo](#component-hosted-in-pipedreams-github-repo)
-        - [Component based on code hosted anywhere](#component-based-on-code-hosted-anywhere)
+  - [States](#states)
+    - [Saved Component](#saved-component)
+    - [Deployed Component](#deployed-component)
+    - [Destroyed Component](#destroyed-component)
+  - [Managing](#managing)
+    - [Development Mode](#development-mode)
+    - [One-Time Deploy](#one-time-deploy)
+      - [CLI](#cli-1)
+        - [From Local Code](#from-local-code)
+        - [From Pipedream Github Repo](#from-pipedream-github-repo)
+        - [From Any Hosted Code](#from-any-hosted-code)
       - [UI](#ui)
-        - [Component hosted in Pipedream's Github repo](#component-hosted-in-pipedreams-github-repo-1)
-        - [Component based on code hosted anywhere](#component-based-on-code-hosted-anywhere-1)
+        - [Deploy from Pipedream Github Repo](#deploy-from-pipedream-github-repo)
+        - [Deploy Hosted Code](#deploy-hosted-code)
       - [API](#api)
     - [Updating a deployed component](#updating-a-deployed-component)
-  - [Destroyed Component](#destroyed-component)
 - [Event Lifecycle](#event-lifecycle)
   - [Triggering Components](#triggering-components)
   - [Emitting Events](#emitting-events)
@@ -26,28 +27,29 @@
     - [UI](#ui-1)
     - [Workflows](#workflows)
     - [API](#api-1)
-    - [CLI](#cli-1)
-- [Component Structure](#component-structure)
-- [Props](#props)
-  - [User Input Props](#user-input-props)
-    - [General](#general)
-    - [Advanced Configuration](#advanced-configuration)
+    - [CLI](#cli-2)
+- [Component API](#component-api)
+  - [Component Structure](#component-structure)
+  - [Props](#props)
+    - [User Input Props](#user-input-props)
+      - [General](#general)
+      - [Advanced Configuration](#advanced-configuration)
       - [Asyc Options (example)](#asyc-options-example)
-      - [Prop Definitions (example)](#prop-definitions-example)
-  - [Interface Props](#interface-props)
+        - [Prop Definitions (example)](#prop-definitions-example)
+    - [Interface Props](#interface-props)
     - [Timer](#timer)
-    - [HTTP](#http)
-      - [Responding to HTTP requests](#responding-to-http-requests)
-      - [HTTP Event Shape](#http-event-shape)
-  - [Service Props](#service-props)
-    - [DB](#db)
-  - [App Props](#app-props)
-- [Methods](#methods)
-- [Hooks](#hooks)
-- [Dedupe Strategies](#dedupe-strategies)
-- [Run](#run)
-  - [$emit](#emit)
-  - [Using npm packages](#using-npm-packages)
+      - [HTTP](#http)
+        - [Responding to HTTP requests](#responding-to-http-requests)
+        - [HTTP Event Shape](#http-event-shape)
+    - [Service Props](#service-props)
+      - [DB](#db)
+    - [App Props](#app-props)
+  - [Methods](#methods)
+  - [Hooks](#hooks)
+  - [Dedupe Strategies](#dedupe-strategies)
+  - [Run](#run)
+    - [$emit](#emit)
+    - [Using npm packages](#using-npm-packages)
 
 
 # Overview 
@@ -80,7 +82,7 @@ To help you get started, we created a [step-by-step walkthrough](/quickstart.md)
 
 Deploy or contribute to curated open source components in Pipedream's Github repo. Or author, deploy and maintain your own via your standard CI/CD process.
 
-## Local Development
+## CLI
 
 You can develop components locally and deploy via the CLI. To install it, run:
 
@@ -94,29 +96,27 @@ See the [CLI reference](https://docs.pipedream.com/cli/reference/) for detailed 
 
 # Component Lifecycle
 
+## States
+
 Pipedream components support `Activate()` and `Deactivate()` lifecycle hooks. The code for these hooks are defined within the component. Learn more about the [component structure](#component-structure) and [hook usage](#hooks).
 
 ![image-20200812163702984](images/image-20200812163702984.png) 
 
-## Saved Component
+### Saved Component
 
 A saved component is non-instantiated component code that has previously been deployed to Pipedream. Each saved component has a unique saved component ID. Saved components cannot be invoked directly — they must first be depoyed.
 
-## Deployed Component
+### Deployed Component
 
 A deployed component is an instance of a saved component that can be invoked. Deployed components can be active or inactive. On deploy, Pipedream instantiates a saved component and invokes the `Activate()` hook.
 
-### Creating a deployed component
+### Destroyed Component
 
-You can deploy a component using the CLI, UI or API.
+If a deployed component is deleted, the component is destroyed. On delete, Pipedream invokes the `Deactivate()` hook and then destroys the deployed component.
 
-#### CLI
+## Managing
 
-To deploy a via CLI, use the `pd deploy` command. 
-
-##### Locally developed component
-
-###### Development Mode
+### Development Mode
 
 The easiest way to develop and iteratively test is to use the `pd dev` command tol deploy a local file, attach to a component, and automatically update the component on each local save. To deploy a new component with `pd dev`, run:
 
@@ -130,7 +130,13 @@ To attach to an existing deployed component, run:
 pd dev [--dc <existing-deployed-component-id>] <file-or-name>
 ```
 
-###### One-Time Deploy
+### One-Time Deploy
+
+#### CLI
+
+##### From Local Code
+
+To deploy a via CLI, use the `pd deploy` command. 
 
 ```bash
 pd deploy <filename>
@@ -142,7 +148,7 @@ E.g.,
 pd deploy my-component.js
 ```
 
-##### Component hosted in Pipedream's Github repo
+##### From Pipedream Github Repo
 
 You can explore the components available to deploy in [Pipedream's Github repo](https://github.com/PipedreamHQ/pipedream/tree/master/components).
 
@@ -156,7 +162,7 @@ E.g.,
 pd deploy https://github.com/PipedreamHQ/pipedream/blob/master/components/http/http.js
 ```
 
-##### Component based on code hosted anywhere
+##### From Any Hosted Code
 
 ```bash
 pd deploy <url-to-raw-code>
@@ -170,7 +176,7 @@ pd deploy https://raw.githubusercontent.com/PipedreamHQ/pipedream/master/compone
 
 #### UI
 
-##### Component hosted in Pipedream's Github repo
+##### Deploy from Pipedream Github Repo
 
 You can explore the components available to deploy in [Pipedream's Github repo](https://github.com/PipedreamHQ/pipedream/tree/master/components).
 
@@ -184,7 +190,7 @@ E.g.,
 https://pipedream.com/sources?action=create&url=https%3A%2F%2Fgithub.com%2FPipedreamHQ%2Fpipedream%2Fblob%2Fmaster%2Fcomponents%2Fhttp%2Fhttp.js
 ```
 
-##### Component based on code hosted anywhere
+##### Deploy Hosted Code
 
 ```bash
 https://pipedream.com/sources?action=create&url=<url-encoded-url>
@@ -207,10 +213,6 @@ On update, Pipedream:
 1. Invokes the `Deactivate()` hook
 2. Updates a deployed component with the latest code and props
 3. Invokes the `Activate()` hook
-
-## Destroyed Component
-
-If a deployed component is deleted, the component is destroyed. On delete, Pipedream invokes the `Deactivate()` hook and then destroys the deployed component.
 
 # Event Lifecycle
 
@@ -259,7 +261,9 @@ For example, you can use the CLI to retrieve the last 10 events:
 pd events -n 10 <source-name>
 ```
 
-# Component Structure
+# Component API
+
+## Component Structure
 
 Pipedream components export an object with the following properties:
 
@@ -292,7 +296,7 @@ module.exports = {
 | `dedupe` | `string` | optional | You may specify a dedupe strategy (`unique`, `greatest`, `last`) to be applied to emitted events |
 | `run` | `method` | required | Each time a component is invoked (for example, via HTTP request), its `run` method is called. The event that triggered the component is passed to run, so that you can access it within the method. Events are emitted using `this.$emit()`. |
 
-# Props
+## Props
 
  Props are custom attributes you can register on a component. When a value is passed to a prop attribute, it becomes a property on that component instance. You can reference these properties in component code using `this` (e.g., `this.propName`). 
 
@@ -304,11 +308,11 @@ module.exports = {
 | [App](#user-input-props) | Enables managed auth for a component |
 
 
-## User Input Props
+### User Input Props
 
 User input props allow components to accept input on deploy. When deploying a component, users will be prompted to enter values for these props, setting the behavior of the component accordingly.
 
-### General
+#### General
 
 **Definition**
 
@@ -366,7 +370,7 @@ module.exports = {
 
 To see more examples, explore the curated components in Pipedream's Github repo.
 
-### Advanced Configuration
+#### Advanced Configuration
 
 #### Asyc Options ([example](https://github.com/PipedreamHQ/pipedream/blob/master/components/github/github.app.js))
 
@@ -411,7 +415,7 @@ module.exports = {
 }
 ```
 
-#### Prop Definitions ([example](https://github.com/PipedreamHQ/pipedream/blob/master/components/github/new-commit.js))
+##### Prop Definitions ([example](https://github.com/PipedreamHQ/pipedream/blob/master/components/github/new-commit.js))
 
 Prop definitions enable you to reuse props that are defined in another object. A common use case is to enable re-use of props that are defined for a specific app.
 
@@ -464,7 +468,7 @@ module.exports = {
 }
 ```
 
-## Interface Props
+### Interface Props
 
 Interface props are infrastructure abstractions provided by the Pipedream platform. They declare how a component is invoked — via HTTP request, run on a schedule, etc. — and therefore define the shape of the events it processes.
 
@@ -542,7 +546,7 @@ module.exports = {
 }
 ```
 
-### HTTP
+#### HTTP
 
 To use the HTTP interface, declare a prop whose value is the string $.interface.http:
 
@@ -568,7 +572,7 @@ props: {
 | `event` | Returns an object representing the HTTP request (e.g., `{ method: 'POST', path: '/', query: {}, headers: {}, bodyRaw: '', body: }`) | `run(event)` | The shape of `event` corresponds with the the HTTP request you make to the endpoint generated by Pipedream for this interface |
 | `this.myPropName.respond()` | Returns an HTTP response to the client (e.g., `this.http.respond({status: 200})`). | n/a | `run()` |
 
-#### Responding to HTTP requests
+##### Responding to HTTP requests
 
 The HTTP interface exposes a `respond()` method that lets your component issue HTTP responses. You **must** run `this.http.respond()` to respond to the client from the `run()` method of a component.
 
@@ -579,7 +583,7 @@ The HTTP interface exposes a `respond()` method that lets your component issue H
 | `body`    | `string` `object` `buffer` | optional | Return a custom body in the HTTP response. This can be any string, object, or Buffer.  |
 
 
-#### HTTP Event Shape
+##### HTTP Event Shape
 
 Following is the shape of the event passed to the `run()` method of your component.
 
@@ -620,7 +624,7 @@ module.exports = {
 }
 ```
 
-## Service Props
+### Service Props
 
 | Service         | Description                                                                                  |
 |---------------------|----------------------------------------------------------------------------------------------|
@@ -628,7 +632,7 @@ module.exports = {
 
 
 
-### DB
+#### DB
 
 **Definition**
 
@@ -646,7 +650,7 @@ props: {
 | `this.myPropName.set('key', value)` | Method to set a value for a key. Values must be JSON serializable data. | Use the `get()` method to read values | `run()` `hooks` `methods` |
 
 
-## App Props
+### App Props
 
 **Definition**
 
@@ -680,7 +684,7 @@ props: {
 
 >**Note:** The specific `$auth` keys supported for each app will be pulished in the near future.
 
-# Methods
+## Methods
 
 You can define helper functions within the `methods` property of your component. You have access to these functions within the [`run` method](#run), or within other methods.
 
@@ -700,7 +704,7 @@ can be run like so:
 const randomNum = this.random();
 ```
 
-# Hooks
+## Hooks
 
 ```javascript
 hooks: {
@@ -714,7 +718,7 @@ hooks: {
 | `activate`        | `method` | optional | Executed each time a commponent is deployed or updated |
 | `deactivate`        | `method` | optional | Executed each time a commponent is deactivated  |
 
-# Dedupe Strategies
+## Dedupe Strategies
 
 > **IMPORTANT:** To use a dedupe strategy, you must emit an `id` as part of the event metadata (dedupe strategies are applied to the submitted `id`)
 
@@ -724,7 +728,7 @@ hooks: {
 | `greatest`        | Pipedream caches the largest `id` value (must be numeric). Only events with larger `id` values are emitted (and the cache is updated to match the new, largest value). |
 | `last`        | Pipedream caches the ID assocaited with the last emitted event. When new events are emitted, only events after the matching `id` value will be emitted as events. If no `id` values match, then all events will be emitted. |
 
-# Run
+## Run
 
 Each time a component is invoked (for example, via HTTP request), its `run` method is called.
 
@@ -750,7 +754,7 @@ If the `run` method emits events using `this.$emit`, you can access the events i
 pd events <deployed-component-name>
 ```
 
-## $emit
+### $emit
 
 `this.$emit()` is a method in scope for the `run` method of a component
 
@@ -784,7 +788,7 @@ module.exports = {
 }
 ```
 
-## Using npm packages
+### Using npm packages
 
 To use an npm package in a component, just require it. There is no `package.json` or `npm install` required.
 
