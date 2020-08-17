@@ -82,9 +82,9 @@ To help you get started, we created a [step-by-step walkthrough](/quickstart.md)
 
 Deploy or contribute to curated open source components in Pipedream's Github repo. Or author, deploy and maintain your own via your standard CI/CD process.
 
-## CLI
+## Installing the CLI
 
-You can develop components locally and deploy via the CLI. To install it, run:
+Several examples below use the CLI. To install it, run:
 
 ```bash
 curl https://cli.pipedream.com/install | sh
