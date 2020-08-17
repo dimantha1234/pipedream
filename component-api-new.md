@@ -108,7 +108,7 @@ Deploy or contribute to curated open source components in Pipedream's Github rep
 
 ## Diagram
 
-![image-20200812163702984](images/image-20200812163702984.png)
+![image-20200816223906765](./images/image-20200816223906765.png)
 
 ## States
 
