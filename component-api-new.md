@@ -129,19 +129,17 @@ If a deployed component is deleted, the component is destroyed. On delete, Piped
 
 ### Deploy
 
-blah blah blah
+On deploy, Pipedream creates an instance of a saved component and invokes the optional `Activate()` hook. A unique deployed component ID is generated for the component. 
+
+You can deploy a component via the [CLI, UI or API](#management).
 
 ### Update
 
-On update, Pipedream:
-
-1. Invokes the `Deactivate()` hook
-2. Updates a deployed component with the latest code and props
-3. Invokes the `Activate()` hook
+On update, Pipedream, invokes the optional `Deactivate()` hook, updates the code and props for a deployed component, and then invokes the optional `Activate()` hook. The deployed component ID is not changed by an update operation.
 
 ### Delete
 
-On delete, Pipedrea
+On delete, Pipedream invokes the optional `Deactivate()` hook and deletes the component instance.
 
 ## Hooks
 
