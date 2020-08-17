@@ -10,7 +10,7 @@ This document is a reference for Pipedream's component API. Please raise an issu
     - [Saved Component](#saved-component)
     - [Deployed Component](#deployed-component)
     - [Destroyed Component](#destroyed-component)
-  - [Actions](#actions)
+  - [Operations](#operations)
     - [Deploy](#deploy)
     - [Update](#update)
     - [Delete](#delete)
@@ -125,7 +125,7 @@ A deployed component is an instance of a saved component that can be invoked. De
 
 If a deployed component is deleted, the component is destroyed. On delete, Pipedream invokes the `Deactivate()` hook and then destroys the deployed component.
 
-## Actions
+## Operations
 
 ### Deploy
 
