@@ -1,3 +1,5 @@
+This document is a reference for Pipedream's component API. Please raise an issue or PR in this repo if you notice something out-of-date.
+
 - [Overview](#overview)
   - [What is a component?](#what-is-a-component)
   - [Quickstart](#quickstart)
@@ -75,8 +77,6 @@ Components are Node.js modules that run on Pipedream's serverless infrastructure
 - Connect to 300+ apps using Pipedream managed auth
 - Use most npm pacakges with no `npm install` or `package.json` required
 - Store and retrieve state using the [built-in key-value store](#servicedb)
-
-This document is a reference for the component API. Please raise an issue or PR in this repo if you notice something out-of-date.
 
 ## Quickstart
 
