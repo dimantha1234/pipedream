@@ -298,7 +298,7 @@ Events can be retrieved using the [REST API](https://docs.pipedream.com/api/rest
 
 ### CLI
 
-For example, you can use the CLI to retrieve the last 10 events:
+Use the `pd events` command to retrieve the last 10 events via the CLI:
 
 ```
 pd events -n 10 <source-name>
