@@ -22,10 +22,14 @@
         - [From Local Code](#from-local-code)
         - [From Pipedream Github Repo](#from-pipedream-github-repo)
         - [From Any Hosted Code](#from-any-hosted-code)
+      - [Update](#update-1)
+      - [Delete](#delete-1)
     - [Via UI](#via-ui)
       - [Deploy](#deploy-2)
         - [From Pipedream Github Repo](#from-pipedream-github-repo-1)
         - [From Any Hosted Code](#from-any-hosted-code-1)
+      - [Update](#update-2)
+      - [Delete](#delete-2)
     - [Via API](#via-api)
 - [Event Lifecycle](#event-lifecycle)
   - [Triggering Components](#triggering-components)
@@ -205,6 +209,14 @@ E.g.,
 pd deploy https://raw.githubusercontent.com/PipedreamHQ/pipedream/master/components/http/http.js
 ```
 
+#### Update
+
+Update content here...
+
+#### Delete
+
+Delete content here...
+
 ### Via UI
 
 #### Deploy
@@ -232,6 +244,14 @@ E.g.,
 ```bash
 https://pipedream.com/sources?action=create&url=https%3A%2F%2Fraw.githubusercontent.com%2FPipedreamHQ%2Fpipedream%2Fmaster%2Fcomponents%2Fhttp%2Fhttp.js
 ```
+
+#### Update
+
+Update content here...
+
+#### Delete
+
+Delete content here...
 
 ### Via API
 
