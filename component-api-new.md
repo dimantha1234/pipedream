@@ -130,7 +130,7 @@ To attach to an existing deployed component, run:
 pd dev [--dc <existing-deployed-component-id>] <file-or-name>
 ```
 
-### One-Time Deploy
+### Deploy
 
 #### CLI
 
@@ -206,13 +206,17 @@ https://pipedream.com/sources?action=create&url=https%3A%2F%2Fraw.githubusercont
 
 See the [docs](https://docs.pipedream.com/api/rest/#operations).
 
-### Updating a deployed component
+### Update
 
 On update, Pipedream:
 
 1. Invokes the `Deactivate()` hook
 2. Updates a deployed component with the latest code and props
 3. Invokes the `Activate()` hook
+
+### Delete
+
+On update, Pipedrea
 
 # Event Lifecycle
 
