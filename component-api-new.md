@@ -16,7 +16,7 @@
     - [Activate](#activate)
     - [Deactivate](#deactivate)
   - [Management](#management)
-    - [Via CLI](#via-cli)
+    - [CLI](#cli)
       - [Development Mode](#development-mode)
       - [Deploy](#deploy-1)
         - [From Local Code](#from-local-code)
@@ -24,21 +24,21 @@
         - [From Any Hosted Code](#from-any-hosted-code)
       - [Update](#update-1)
       - [Delete](#delete-1)
-    - [Via UI](#via-ui)
+    - [UI](#ui)
       - [Deploy](#deploy-2)
         - [From Pipedream Github Repo](#from-pipedream-github-repo-1)
         - [From Any Hosted Code](#from-any-hosted-code-1)
       - [Update](#update-2)
       - [Delete](#delete-2)
-    - [Via API](#via-api)
+    - [API](#api)
 - [Event Lifecycle](#event-lifecycle)
   - [Triggering Components](#triggering-components)
   - [Emitting Events](#emitting-events)
   - [Consuming Events](#consuming-events)
-    - [UI](#ui)
+    - [UI](#ui-1)
     - [Workflows](#workflows)
-    - [API](#api)
-    - [CLI](#cli)
+    - [API](#api-1)
+    - [CLI](#cli-1)
 - [Component API](#component-api)
   - [Component Structure](#component-structure)
   - [Props](#props)
@@ -151,7 +151,7 @@ On delete, Pipedrea
 
 ## Management
 
-### Via CLI
+### CLI
 
 #### Development Mode
 
@@ -217,7 +217,7 @@ Update content here...
 
 Delete content here...
 
-### Via UI
+### UI
 
 #### Deploy
 
@@ -253,7 +253,7 @@ Update content here...
 
 Delete content here...
 
-### Via API
+### API
 
 See the [docs](https://docs.pipedream.com/api/rest/#operations).
 
