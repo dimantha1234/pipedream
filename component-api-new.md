@@ -12,6 +12,9 @@
     - [Deploy](#deploy)
     - [Update](#update)
     - [Delete](#delete)
+  - [Hooks](#hooks)
+    - [Activate](#activate)
+    - [Deactivate](#deactivate)
   - [Management](#management)
     - [Via CLI](#via-cli)
       - [Development Mode](#development-mode)
@@ -49,7 +52,7 @@
       - [DB](#db)
     - [App Props](#app-props)
   - [Methods](#methods)
-  - [Hooks](#hooks)
+  - [Hooks](#hooks-1)
   - [Dedupe Strategies](#dedupe-strategies)
   - [Run](#run)
     - [$emit](#emit)
@@ -135,6 +138,12 @@ On update, Pipedream:
 ### Delete
 
 On delete, Pipedrea
+
+## Hooks
+
+### Activate
+
+### Deactivate
 
 ## Management
 
