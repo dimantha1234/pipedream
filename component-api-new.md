@@ -2,6 +2,7 @@
   - [What is a component?](#what-is-a-component)
   - [Quickstart](#quickstart)
   - [Contributing](#contributing)
+  - [Installing the CLI](#installing-the-cli)
 - [Component Lifecycle](#component-lifecycle)
   - [States](#states)
     - [Saved Component](#saved-component)
@@ -13,7 +14,6 @@
     - [Delete](#delete)
   - [Management](#management)
     - [Via CLI](#via-cli)
-      - [Installing the CLI](#installing-the-cli)
       - [Development Mode](#development-mode)
       - [Deploy](#deploy-1)
         - [From Local Code](#from-local-code)
@@ -86,6 +86,18 @@ To help you get started, we created a [step-by-step walkthrough](/quickstart.md)
 
 Deploy or contribute to curated open source components in Pipedream's Github repo. Or author, deploy and maintain your own via your standard CI/CD process.
 
+## Installing the CLI
+
+Several examples below use the CLI. To install it, run:
+
+```bash
+curl https://cli.pipedream.com/install | sh
+```
+
+Pipedream publishes a build of the CLI for macOS and Linux (for `386`, `amd64`, `arm`, and `arm64` architectures). If you need to use the CLI on another OS or architecture, [please reach out](https://docs.pipedream.com/support/).
+
+See the [CLI reference](https://docs.pipedream.com/cli/reference/) for detailed usage and examples beyond those covered below.
+
 # Component Lifecycle
 
 ## States
@@ -127,19 +139,6 @@ On delete, Pipedrea
 ## Management
 
 ### Via CLI
-
-#### Installing the CLI
-
-Several examples below use the CLI. To install it, run:
-
-```bash
-curl https://cli.pipedream.com/install | sh
-```
-
-Pipedream publishes a build of the CLI for macOS and Linux (for `386`, `amd64`, `arm`, and `arm64` architectures). If you need to use the CLI on another OS or architecture, [please reach out](https://docs.pipedream.com/support/).
-
-See the [CLI reference](https://docs.pipedream.com/cli/reference/) for detailed usage and examples beyond those covered below.
-
 
 #### Development Mode
 
