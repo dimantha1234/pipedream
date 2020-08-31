@@ -77,7 +77,9 @@ Pipedream requests the following scopes when you connect your account. [Contact 
 
 ##### Endpoint
 
-`https://api.twitter.com/oauth/request_token`
+```
+https://api.twitter.com/oauth/request_token
+```
 
 ##### Configuration
 
@@ -99,7 +101,9 @@ None
 
 ##### Endpoint
 
+```
 https://api.twitter.com/oauth/authenticate
+```
 
 ##### Configuration
 
@@ -127,7 +131,9 @@ None
 
 ##### Endpoint
 
+```
 https://api.twitter.com/oauth/access_token
+```
 
 ##### Configuration
 
