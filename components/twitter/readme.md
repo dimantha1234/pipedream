@@ -10,13 +10,20 @@ Use Pipedrem to get events on new Tweets, followers, likes, search mentions and 
 Click to connect your Twitter account and use tokens in code. Pipedream manages the OAuth authentication and refresh process.
 
 ```javascript
-return await require("@pipedreamhq/platform").axios(this, {
-  url: `https://api.twitter.com/1.1/account/verify_credentials.json`,
-}, {
-  token: {
-    key: auths.twitter.oauth_access_token,
-    secret: auths.twitter.oauth_refresh_token,
-  },
-  oauthSignerUri: auths.twitter.oauth_signer_uri,
-})
+const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twitter/twitter.app.js')
+ 
+module.exports = {
+  name: "Twitter Example",
+  description: "Return your Twitter account details on each invocation", 
+  version: "0.0.1",
+  props: {
+    twitter,
+  }, 
+  async run(event) {
+    this.twitter._makeRequest({
+      url: `https://api.twitter.com/1.1/account/verify_credentials.json`,
+    })
+  }
+}
+
 ```
