@@ -65,7 +65,9 @@ Twitter’s API relies on the `OAuth 1.0a` protocol. At a very simplified level,
 
 ### Scopes
 
-All
+| Scope     | Description           |
+| ------- | --------------- |
+| `Read and Write` | This permission level permits read and write access to Twitter resources, including the ability to read a user’s Tweets, home timeline, and profile information; and to post Tweets, follow users, or update elements of a user’s profile information. It also allows write access to send Direct Messages on behalf of a user (POST direct_messages/events/new) but does not provide the ability to read or delete Direct Messages. |
 
 ### OAuth Configuration
 
