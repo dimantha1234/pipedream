@@ -27,28 +27,28 @@ module.exports = {
 }
 
 ```
+<a href="http://tod.ly/3fMdryW"><img src="https://i.ibb.co/m0bBsSL/deploy-clean.png" height="35"></a>
+
 
 ## Event Sources
 
 Event run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
 
-- **Search Mentions:** Emit new Tweets when a new tweet matches your search [view code](./sources/search-mentions) | [deploy](./sources/search-mentions)
-- **New Tweets by User:** Emit new Tweets when when there is a new Tweet from a specific user [view code](./sources/search-mentions) | [deploy](./sources/search-mentions)
-- **New Followers:** Emit new Tweets when when you get a new follower. [view code](./sources/search-mentions) | [deploy](./sources/search-mentions)
+- **[Search Mentions:](./sources/search-mentions)** Emit new Tweets when a new tweet matches your search [code](./sources/search-mentions) | [deploy](./sources/search-mentions)
+- **[New Tweets by User:](./sources/search-mentions)** Emit new Tweets when when there is a new Tweet from a specific user [view code](./sources/search-mentions) | [deploy](./sources/search-mentions)
+- **[New Followers:](./sources/search-mentions)** Emit new Tweets when when you get a new follower. [view code](./sources/search-mentions) | [deploy](./sources/search-mentions)
 
 
 
-**[View All Sources](./sources/search-mentions)**
+**[View All Sources(8)](./sources/search-mentions)**
 
 
 ## Actions
 
 Event run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
 
-- **Search Mentions:** Emit new Tweets when a new tweet matches your search [view code](./sources/search-mentions) | [deploy](./sources/search-mentions)
-- **New Tweets by User:** Emit new Tweets when when there is a new Tweet from a specific user [view code](./sources/search-mentions) | [deploy](./sources/search-mentions)
-- **New Followers:** Emit new Tweets when when you get a new follower. [view code](./sources/search-mentions) | [deploy](./sources/search-mentions)
-
-
+- **[Search Mentions:](./sources/search-mentions)** Emit new Tweets when a new tweet matches your search [code](./sources/search-mentions) | [deploy](./sources/search-mentions)
+- **[New Tweets by User:](./sources/search-mentions)** Emit new Tweets when when there is a new Tweet from a specific user [view code](./sources/search-mentions) | [deploy](./sources/search-mentions)
+- **[New Followers:](./sources/search-mentions)** Emit new Tweets when when you get a new follower. [view code](./sources/search-mentions) | [deploy](./sources/search-mentions)
 
 **[View All Actions](./sources/search-mentions)**
