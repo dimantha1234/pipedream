@@ -61,7 +61,7 @@ Event run on Pipedream's infrastructure and turn any API into an event stream. Y
 
 ## Connecting Your Twitter Account
 
-Twitter’s API relies on the `OAuth 1.0a` protocol. At a very simplified level, Twitter’s implementation requires that requests needing `authorization` contain an additional HTTP Authorization header.
+Connect your Twitter account with a click using Pipedream's browser-based OAuth flow. You can initiate auth at https://pipedream.com/apps or via the CLI.
 
 ### Scopes
 
@@ -72,6 +72,8 @@ Pipedream requests the following scopes when you connect your account. [Contact 
 | `Read and Write` | This permission level permits read and write access to Twitter resources, including the ability to read a user’s Tweets, home timeline, and profile information; and to post Tweets, follow users, or update elements of a user’s profile information. It also allows write access to send Direct Messages on behalf of a user (POST direct_messages/events/new) but does not provide the ability to read or delete Direct Messages. |
 
 ### OAuth Configuration
+
+Twitter’s API relies on the `OAuth 1.0a` protocol. At a very simplified level, Twitter’s implementation requires that requests needing `authorization` contain an additional HTTP Authorization header.
 
 Pipedream integrates with the following endpoints using the configuration below when you connect your account.
 
