@@ -73,6 +73,8 @@ Pipedream requests the following scopes when you connect your account. [Contact 
 
 ### OAuth Configuration
 
+Pipedream integrates with the following endpoints using the configuration below when you connect your account.
+
 #### Request Token
 
 ##### Endpoint
