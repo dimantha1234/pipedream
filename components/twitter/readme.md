@@ -5,6 +5,8 @@ From breaking news and entertainment to sports and politics, from big events to 
 
 Use Pipedrem to get events on new Tweets, followers, likes, search mentions and more.
 
+
+
 ## Run Node.js with Twitter auth — try it now
 
 Click to connect your Twitter account and use tokens in code. Pipedream manages the OAuth authentication and refresh process.
@@ -33,31 +35,46 @@ module.exports = {
 <a href="http://tod.ly/3fMdryW"><img src="https://i.ibb.co/m0bBsSL/deploy-clean.png" height="35"></a>
 
 
+
 ## Event Sources
 
 Event run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
 
-- **[Search Mentions:](./sources/search-mentions)** Emit new Tweets when a new tweet matches your search.
-- **[New Tweets by User:](./sources/search-mentions)** Emit new Tweets when when there is a new Tweet from a specific user.
-- **[New Followers:](./sources/search-mentions)** Emit new Tweets when when you get a new follower.
+| Source                                                | Description                                                  |                                                              |
+| ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Search Mentions](./sources/search-mentions)**      | Emit new Tweets when a new tweet matches your search.        | [code](https://pipedream.com) \| [deploy](https://pipedream.com) |
+| **[New Tweets by User](./sources/search-mentions)**   | Emit new Tweets when when there is a new Tweet from a specific user. | [code](https://pipedream.com) \| [deploy](https://pipedream.com) |
+| **[New Followers](./sources/search-mentions)**        | Emit new Tweets when when you get a new follower.            | [code](https://pipedream.com) \| [deploy](https://pipedream.com) |
+| **[My Liked Tweets](./sources/search-mentions)**      | Emit new Tweets when when you get a new follower.            | [code](https://pipedream.com) \| [deploy](https://pipedream.com) |
+| **[New Follower of User](./sources/search-mentions)** | Emit new Tweets when when you get a new follower.            | [code](https://pipedream.com) \| [deploy](https://pipedream.com) |
 
 **[View All Sources (8)](./sources/search-mentions)**
+
+
 
 
 ## Actions
 
 Event run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
 
-- **[Search Mentions:](./sources/search-mentions)** Emit new Tweets when a new tweet matches your search.
-- **[New Tweets by User:](./sources/search-mentions)** Emit new Tweets when when there is a new Tweet from a specific user.
-- **[New Followers:](./sources/search-mentions)** Emit new Tweets when when you get a new follower.
+| Source                                                | Description                                                  |                                                              |
+| ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Search Mentions](./sources/search-mentions)**      | Emit new Tweets when a new tweet matches your search.        | [code](https://pipedream.com) \| [deploy](https://pipedream.com) |
+| **[New Tweets by User](./sources/search-mentions)**   | Emit new Tweets when when there is a new Tweet from a specific user. | [code](https://pipedream.com) \| [deploy](https://pipedream.com) |
+| **[New Followers](./sources/search-mentions)**        | Emit new Tweets when when you get a new follower.            | [code](https://pipedream.com) \| [deploy](https://pipedream.com) |
+| **[My Liked Tweets](./sources/search-mentions)**      | Emit new Tweets when when you get a new follower.            | [code](https://pipedream.com) \| [deploy](https://pipedream.com) |
+| **[New Follower of User](./sources/search-mentions)** | Emit new Tweets when when you get a new follower.            | [code](https://pipedream.com) \| [deploy](https://pipedream.com) |
 
 **[View All Actions (15)](./sources/search-mentions)**
 
-## `npm` Packages Used with Twitter
+
+
+## ` npm` Packages Used with Twitter
 
 - `moment`
 - `querystring`
+
+
 
 ## Connecting Your Twitter Account
 
@@ -160,7 +177,11 @@ None
 
 Not required
 
+
+
 ## Using Twitter in Components
+
+
 
 ### Prop Definitions
 
