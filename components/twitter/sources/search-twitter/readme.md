@@ -1,4 +1,4 @@
-<img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align=left>    
+<img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png">    
 
 <h1 align="left"><strong>Twitter: Search Mentions</strong></h1>
 
