@@ -1,7 +1,20 @@
 <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align=left>    
+
 <h1 align="left"><strong>Twitter: Search Mentions</strong></h1>
 
 Emit new Tweets when a new tweet matches your search.
+
+<a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Run%20on%20Pipedream&color=brightgreen&style=for-the-badge"></a>
+
+**Or deploy via CLI:**
+
+```bash
+pd deploy https://github.com/psavkar/pipedream/blob/readme-test/components/twitter/sources/search-twitter/search-twitter.js
+```
+
+
+
+## Component
 
 ```javascript
 const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twitter/twitter.app.js')
@@ -80,19 +93,13 @@ module.exports = {
   },
 }
 ```
-<a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Run%20on%20Pipedream&color=brightgreen&style=for-the-badge"></a>
-
-**Or deploy via CLI:**
-
-```bash
-pd deploy https://github.com/psavkar/pipedream/blob/readme-test/components/twitter/sources/search-twitter/search-twitter.js
-```
 
 
+## Sample Events
 
-## Sample Event
+Following are a sample events emitted by this source.
 
-Following is a sample event emitted by this source:
+### Original Tweet
 
 ```javascript
 {
@@ -192,6 +199,491 @@ Following is a sample event emitted by this source:
   "lang": "en",
   "created_at_timestamp": 1597278765000,
   "created_at_iso8601": "2020-08-13T00:32:45.000Z"
+}
+```
+
+
+
+### Original Tweet with Media
+
+```javascript
+{
+  "created_at": "Wed Aug 26 23:46:17 +0000 2020",
+  "id": 1298768760409473000,
+  "id_str": "1298768760409473025",
+  "full_text": ".@YouTube as an event source is live! \n🔥 Trigger on new videos, matching keywords, etc.\n✨ Open-source, available on GitHub\n❤️ Developed by a user, see Docs &amp; Quickstart\n😍 Build your own today!\n\nhttps://t.co/uJcO4ZnNht\nhttps://t.co/8yOKWOpzKp https://t.co/uBHKnrVyqQ",
+  "truncated": false,
+  "display_text_range": [
+    0,
+    245
+  ],
+  "entities": {
+    "hashtags": [],
+    "symbols": [],
+    "user_mentions": [
+      {
+        "screen_name": "YouTube",
+        "name": "YouTube",
+        "id": 10228272,
+        "id_str": "10228272",
+        "indices": [
+          1,
+          9
+        ]
+      }
+    ],
+    "urls": [
+      {
+        "url": "https://t.co/uJcO4ZnNht",
+        "expanded_url": "https://pipedream.com/sources/new?app=youtube",
+        "display_url": "pipedream.com/sources/new?ap…",
+        "indices": [
+          198,
+          221
+        ]
+      },
+      {
+        "url": "https://t.co/8yOKWOpzKp",
+        "expanded_url": "https://github.com/PipedreamHQ/pipedream",
+        "display_url": "github.com/PipedreamHQ/pi…",
+        "indices": [
+          222,
+          245
+        ]
+      }
+    ],
+    "media": [
+      {
+        "id": 1298768746505310200,
+        "id_str": "1298768746505310208",
+        "indices": [
+          246,
+          269
+        ],
+        "media_url": "http://pbs.twimg.com/media/EgYnSzTUEAA_hYh.jpg",
+        "media_url_https": "https://pbs.twimg.com/media/EgYnSzTUEAA_hYh.jpg",
+        "url": "https://t.co/uBHKnrVyqQ",
+        "display_url": "pic.twitter.com/uBHKnrVyqQ",
+        "expanded_url": "https://twitter.com/pipedream/status/1298768760409473025/photo/1",
+        "type": "photo",
+        "sizes": {
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "small": {
+            "w": 680,
+            "h": 376,
+            "resize": "fit"
+          },
+          "medium": {
+            "w": 1200,
+            "h": 664,
+            "resize": "fit"
+          },
+          "large": {
+            "w": 1472,
+            "h": 814,
+            "resize": "fit"
+          }
+        }
+      }
+    ]
+  },
+  "extended_entities": {
+    "media": [
+      {
+        "id": 1298768746505310200,
+        "id_str": "1298768746505310208",
+        "indices": [
+          246,
+          269
+        ],
+        "media_url": "http://pbs.twimg.com/media/EgYnSzTUEAA_hYh.jpg",
+        "media_url_https": "https://pbs.twimg.com/media/EgYnSzTUEAA_hYh.jpg",
+        "url": "https://t.co/uBHKnrVyqQ",
+        "display_url": "pic.twitter.com/uBHKnrVyqQ",
+        "expanded_url": "https://twitter.com/pipedream/status/1298768760409473025/photo/1",
+        "type": "photo",
+        "sizes": {
+          "thumb": {
+            "w": 150,
+            "h": 150,
+            "resize": "crop"
+          },
+          "small": {
+            "w": 680,
+            "h": 376,
+            "resize": "fit"
+          },
+          "medium": {
+            "w": 1200,
+            "h": 664,
+            "resize": "fit"
+          },
+          "large": {
+            "w": 1472,
+            "h": 814,
+            "resize": "fit"
+          }
+        }
+      }
+    ]
+  },
+  "metadata": {
+    "iso_language_code": "en",
+    "result_type": "recent"
+  },
+  "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 1067926271856767000,
+    "id_str": "1067926271856766976",
+    "name": "Pipedream",
+    "screen_name": "pipedream",
+    "location": "San Francisco, CA",
+    "description": "Serverless integration and compute platform. Free for developers. 👩‍💻☁️🔗💥🚀",
+    "url": "https://t.co/uH4CagGdm7",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/uH4CagGdm7",
+            "expanded_url": "https://pipedream.com",
+            "display_url": "pipedream.com",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 5162,
+    "friends_count": 4055,
+    "listed_count": 57,
+    "created_at": "Wed Nov 28 23:40:39 +0000 2018",
+    "favourites_count": 1029,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 234,
+    "lang": null,
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "F5F8FA",
+    "profile_background_image_url": null,
+    "profile_background_image_url_https": null,
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1207431957765705728/HzP2Yhq8_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1207431957765705728/HzP2Yhq8_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/1067926271856766976/1571334539",
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": false,
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": true,
+    "follow_request_sent": false,
+    "notifications": false,
+    "translator_type": "none"
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "is_quote_status": false,
+  "retweet_count": 0,
+  "favorite_count": 0,
+  "favorited": false,
+  "retweeted": false,
+  "possibly_sensitive": false,
+  "lang": "en",
+  "created_at_timestamp": 1598485577000,
+  "created_at_iso8601": "2020-08-26T23:46:17.000Z"
+}
+```
+
+
+
+### Retweet
+
+```javascript
+{
+  "created_at": "Fri Aug 07 21:29:56 +0000 2020",
+  "id": 1291849079845089300,
+  "id_str": "1291849079845089280",
+  "full_text": "RT @mjclemente84: I'll be finishing up this week, like last, by exploring @pipedream during a live coding session.\n\nHoping to take data fro…",
+  "truncated": false,
+  "display_text_range": [
+    0,
+    140
+  ],
+  "entities": {
+    "hashtags": [],
+    "symbols": [],
+    "user_mentions": [
+      {
+        "screen_name": "mjclemente84",
+        "name": "Matthew Clemente",
+        "id": 257038630,
+        "id_str": "257038630",
+        "indices": [
+          3,
+          16
+        ]
+      },
+      {
+        "screen_name": "pipedream",
+        "name": "Pipedream",
+        "id": 1067926271856767000,
+        "id_str": "1067926271856766976",
+        "indices": [
+          74,
+          84
+        ]
+      }
+    ],
+    "urls": []
+  },
+  "metadata": {
+    "iso_language_code": "en",
+    "result_type": "recent"
+  },
+  "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Twitter Web App</a>",
+  "in_reply_to_status_id": null,
+  "in_reply_to_status_id_str": null,
+  "in_reply_to_user_id": null,
+  "in_reply_to_user_id_str": null,
+  "in_reply_to_screen_name": null,
+  "user": {
+    "id": 1067926271856767000,
+    "id_str": "1067926271856766976",
+    "name": "Pipedream",
+    "screen_name": "pipedream",
+    "location": "San Francisco, CA",
+    "description": "Serverless integration and compute platform. Free for developers. 👩‍💻☁️🔗💥🚀",
+    "url": "https://t.co/uH4CagGdm7",
+    "entities": {
+      "url": {
+        "urls": [
+          {
+            "url": "https://t.co/uH4CagGdm7",
+            "expanded_url": "https://pipedream.com",
+            "display_url": "pipedream.com",
+            "indices": [
+              0,
+              23
+            ]
+          }
+        ]
+      },
+      "description": {
+        "urls": []
+      }
+    },
+    "protected": false,
+    "followers_count": 4785,
+    "friends_count": 3815,
+    "listed_count": 55,
+    "created_at": "Wed Nov 28 23:40:39 +0000 2018",
+    "favourites_count": 1023,
+    "utc_offset": null,
+    "time_zone": null,
+    "geo_enabled": false,
+    "verified": false,
+    "statuses_count": 225,
+    "lang": null,
+    "contributors_enabled": false,
+    "is_translator": false,
+    "is_translation_enabled": false,
+    "profile_background_color": "F5F8FA",
+    "profile_background_image_url": null,
+    "profile_background_image_url_https": null,
+    "profile_background_tile": false,
+    "profile_image_url": "http://pbs.twimg.com/profile_images/1207431957765705728/HzP2Yhq8_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/1207431957765705728/HzP2Yhq8_normal.jpg",
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/1067926271856766976/1571334539",
+    "profile_link_color": "1DA1F2",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "has_extended_profile": false,
+    "default_profile": true,
+    "default_profile_image": false,
+    "following": true,
+    "follow_request_sent": false,
+    "notifications": false,
+    "translator_type": "none"
+  },
+  "geo": null,
+  "coordinates": null,
+  "place": null,
+  "contributors": null,
+  "retweeted_status": {
+    "created_at": "Fri Aug 07 21:04:13 +0000 2020",
+    "id": 1291842606293569500,
+    "id_str": "1291842606293569537",
+    "full_text": "I'll be finishing up this week, like last, by exploring @pipedream during a live coding session.\n\nHoping to take data from @JotForm, manipulate it, and pipe it to @googlesheets 🤞\n\nGoing live in 5: https://t.co/1qqhYQn1tk",
+    "truncated": false,
+    "display_text_range": [
+      0,
+      220
+    ],
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "user_mentions": [
+        {
+          "screen_name": "pipedream",
+          "name": "Pipedream",
+          "id": 1067926271856767000,
+          "id_str": "1067926271856766976",
+          "indices": [
+            56,
+            66
+          ]
+        },
+        {
+          "screen_name": "JotForm",
+          "name": "JotForm",
+          "id": 34689599,
+          "id_str": "34689599",
+          "indices": [
+            123,
+            131
+          ]
+        },
+        {
+          "screen_name": "googlesheets",
+          "name": "Google Sheets",
+          "id": 1150081370187845600,
+          "id_str": "1150081370187845632",
+          "indices": [
+            163,
+            176
+          ]
+        }
+      ],
+      "urls": [
+        {
+          "url": "https://t.co/1qqhYQn1tk",
+          "expanded_url": "https://youtu.be/sndBPkhttgA",
+          "display_url": "youtu.be/sndBPkhttgA",
+          "indices": [
+            197,
+            220
+          ]
+        }
+      ]
+    },
+    "metadata": {
+      "iso_language_code": "en",
+      "result_type": "recent"
+    },
+    "source": "<a href=\"https://about.twitter.com/products/tweetdeck\" rel=\"nofollow\">TweetDeck</a>",
+    "in_reply_to_status_id": null,
+    "in_reply_to_status_id_str": null,
+    "in_reply_to_user_id": null,
+    "in_reply_to_user_id_str": null,
+    "in_reply_to_screen_name": null,
+    "user": {
+      "id": 257038630,
+      "id_str": "257038630",
+      "name": "Matthew Clemente",
+      "screen_name": "mjclemente84",
+      "location": "New Jersey",
+      "description": "Husband. Father. Developer. Always trying to be better.",
+      "url": "https://t.co/CUv7faAamH",
+      "entities": {
+        "url": {
+          "urls": [
+            {
+              "url": "https://t.co/CUv7faAamH",
+              "expanded_url": "http://blog.mattclemente.com",
+              "display_url": "blog.mattclemente.com",
+              "indices": [
+                0,
+                23
+              ]
+            }
+          ]
+        },
+        "description": {
+          "urls": []
+        }
+      },
+      "protected": false,
+      "followers_count": 282,
+      "friends_count": 235,
+      "listed_count": 11,
+      "created_at": "Thu Feb 24 16:00:42 +0000 2011",
+      "favourites_count": 321,
+      "utc_offset": null,
+      "time_zone": null,
+      "geo_enabled": false,
+      "verified": false,
+      "statuses_count": 797,
+      "lang": null,
+      "contributors_enabled": false,
+      "is_translator": false,
+      "is_translation_enabled": false,
+      "profile_background_color": "C0DEED",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/439040536649793538/cBmreTa0_normal.jpeg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/439040536649793538/cBmreTa0_normal.jpeg",
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/257038630/1538426586",
+      "profile_link_color": "1DA1F2",
+      "profile_sidebar_border_color": "C0DEED",
+      "profile_sidebar_fill_color": "DDEEF6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "has_extended_profile": false,
+      "default_profile": true,
+      "default_profile_image": false,
+      "following": false,
+      "follow_request_sent": false,
+      "notifications": false,
+      "translator_type": "none"
+    },
+    "geo": null,
+    "coordinates": null,
+    "place": null,
+    "contributors": null,
+    "is_quote_status": false,
+    "retweet_count": 1,
+    "favorite_count": 1,
+    "favorited": false,
+    "retweeted": false,
+    "possibly_sensitive": false,
+    "lang": "en"
+  },
+  "is_quote_status": false,
+  "retweet_count": 1,
+  "favorite_count": 0,
+  "favorited": false,
+  "retweeted": false,
+  "possibly_sensitive": false,
+  "lang": "en",
+  "created_at_timestamp": 1596835796000,
+  "created_at_iso8601": "2020-08-07T21:29:56.000Z"
 }
 ```
 
