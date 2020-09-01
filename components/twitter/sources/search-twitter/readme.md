@@ -98,6 +98,35 @@ module.exports = {
 }
 ```
 
+## Configuration
+
+### Authentication
+
+This source requires connected accounts for the following apps.
+
+| Source                               | Description                                                  | Authentication Strategy | Popularity |
+| ------------------------------------ | ------------------------------------------------------------ | ----------------------- | ---------- |
+| [Twitter](./sources/search-mentions) | From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. | OAuth 1.0A              | 9.8        |
+
+
+
+### Props
+
+You can modify the following settings during activation or on update via the UI or CLI. 
+
+| Label                                     | Type                | Optional | Options                | Default            | Description                                                  |
+| ----------------------------------------- | ------------------- | -------- | ---------------------- | ------------------ | ------------------------------------------------------------ |
+| Search Term                               | `string`            | `false`  |                        |                    | Search for keywords `star wars`, screen names `@starwars`, or hashtags `#starwars`. You can also use Twitter's [standard search operators](https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators). |
+| Result Type                               | `string`            | `true`   | Recent, Popular, Mixed | `recent`           | Specifies the type of results you want to retrieve.          |
+| Retweets                                  | `string`            | `true`   |                        | `incude`           | Select whether to `include`, `exclude` or `only` include retweets in emitted events. |
+| Replies                                   | `string`            | `true`   |                        | `include`          | Select whether to `include`, `exclude` or `only` include replies in emitted events. |
+| Language                                  | `string`            | `true`   | `async()`              |                    | Restricts tweets to the given language. Language detection is best-effort. |
+| Locale                                    | `string`            | `true`   |                        |                    | Specify the language of the query you are sending (only `ja` is currently effective). This is intended for language-specific consumers and the default should work in the majority of cases. |
+| Geocode                                   | `string`            | `true`   |                        |                    | Returns tweets by users located within a given radius of the given latitude/longitude. The location is preferentially taking from the Geotagging API, but will fall back to their Twitter profile. The parameter value is specified by `latitude,longitude,radius`, where radius units must be specified as either `mi` (miles) or `km` (kilometers). Note that you cannot use the near operator via the API to geocode arbitrary locations; however you can use this geocode parameter to search near geocodes directly. |
+| Enrich Tweets                             | `boolean`           | `true`   |                        |                    | Enrich each tweet with epoch (milliseconds) and ISO8601 conversions of Twitter's `created_at` timestamp. |
+| Count (advanced)                          | `integer`           | `true`   |                        |                    | The maximum number of tweets to return per API request (up to `100`) |
+| Max API Requests per Execution (advanced) | `integer`           | `true`   | `1 - 180`              | `1`                | The maximum number of API requests to make per execution (e.g., multiple requests are required to retrieve paginated results). **Note:** Twitter [rate limits API requests](https://developer.twitter.com/en/docs/basics/rate-limiting) per 15 minute interval. |
+| Timer                                     | `$.interface.timer` | `false`  | `15+ seconds`          | `Every 15 minutes` | Configure the schedule to trigger the component. You may configure an interval (minimum interval of 15 seconds) or a cron expression. |
 
 ## Sample Emits
 
