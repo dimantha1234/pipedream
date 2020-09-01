@@ -23,7 +23,7 @@ module.exports = {
     },
   }, 
   async run(event) {
-    this.twitter._makeRequest({
+    return this.twitter._makeRequest({
       url: `https://api.twitter.com/1.1/account/verify_credentials.json`,
     })
   }
@@ -187,7 +187,7 @@ Use common Twitter methods in your components. Want to contribute a new or Twitt
 
 #### `async` _getAuthorizationHeader
 
-Generate an authorization header to sign the request. The data, method and URL passed into this function must exactly match the values submitted in the API request to Twitter.
+Generate an authorization header to sign the request. The data, method and URL passed into this function must exactly match the values submitted in the API request to Twitter. This method is typically called from `_makeRequest()`.
 
 ##### Inputs
 
@@ -203,5 +203,76 @@ Generate an authorization header to sign the request. The data, method and URL p
 | -------- | ---------------------------------------------------------- |
 | `string` | Authorization header to pass in an API request to Twitter. |
 
+##### Code
 
+```javascript
+async _getAuthorizationHeader({ data, method, url }) {
+  const requestData = {
+    data,
+    method,
+    url,
+  }
+  const token = {
+    key: this.$auth.oauth_access_token,
+    secret: this.$auth.oauth_refresh_token,
+  }
+  return (await axios({
+    method: 'POST',
+    url: this.$auth.oauth_signer_uri,
+    data: {
+      requestData,
+      token,
+    }
+  })).data
+}
+```
+
+#### `async` _makeRequest
+
+Helper function to make requests to Twitter's API. Accepts an axios configuration, generates an OAuth 1.0A signature, and returns the response from Twitter's API.
+
+##### Inputs
+
+| Field     | Type      | Description                                                  |
+| --------- | --------- | ------------------------------------------------------------ |
+| `config`  | `object`  | An object with the configuration for the axios request       |
+| `attempt` | `integer` | The attempt number. Used to support retries when generating the authorization header. |
+
+##### Return Value
+
+| Type  | Description                          |
+| ----- | ------------------------------------ |
+| `any` | Returns the data from Twitter's API. |
+
+##### Code
+
+```javascript
+async _makeRequest(config, attempt = 0) {
+  if (!config.headers) config.headers = {}
+  if (config.params) {
+    const query = querystring.stringify(config.params)
+    delete config.params
+    const sep = config.url.indexOf('?') === -1 ? '?' : '&'
+    config.url += `${sep}${query}`
+    config.url = config.url.replace('?&','?')
+  }
+  let authorization, count = 0
+  const maxTries = 3
+  while(true) {
+    try {
+      authorization = await this._getAuthorizationHeader(config)
+      break
+    } catch (err) {
+      // handle exception
+      if (++count == maxTries) {
+        throw err
+      } 
+      const milliseconds = 1000 * count
+      await new Promise(resolve => setTimeout(resolve, milliseconds)) 
+    }
+  }
+  config.headers.authorization = authorization
+  return await axios(config)
+},
+```
 
