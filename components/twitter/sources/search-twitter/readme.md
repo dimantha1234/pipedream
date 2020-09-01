@@ -100,9 +100,11 @@ module.exports = {
 
 ## Configuration
 
+Pipedream will walk you through configuring this source when you activate via the UI or CLI. You may also update any of these settings after deploying.
+
 ### Authentication
 
-This source requires connected accounts for the following apps.
+Connect your accounts on Pipedream for the following apps.
 
 | Source                               | Description                                                  | Authentication Strategy | Popularity |
 | ------------------------------------ | ------------------------------------------------------------ | ----------------------- | ---------- |
@@ -112,7 +114,7 @@ This source requires connected accounts for the following apps.
 
 ### Props
 
-You can modify the following settings during activation or on update via the UI or CLI. 
+You may customize the following settings when instantiating this source. 
 
 | Label                                     | Type                | Optional | Options                | Default            | Description                                                  |
 | ----------------------------------------- | ------------------- | -------- | ---------------------- | ------------------ | ------------------------------------------------------------ |
