@@ -160,3 +160,50 @@ None
 
 Not required
 
+## Using Twitter in Components
+
+### Prop Definitions
+
+Add common Twitter props to your components with pre-defined labels, descriptions, default values, validation logic and more. You can over-ride any values when you include them in your own component.
+
+ **Want to contribute a new or Twitter prop definition or suggest an edit to an existing one?** [Create a PR](https://pipedream.com) in this repo.
+
+| Name             | Type      | Label            | Optional | Options                | Default  | Description                                                  |
+| ---------------- | --------- | ---------------- | -------- | ---------------------- | -------- | ------------------------------------------------------------ |
+| `q`              | `string`  | Search Term      | `false`  |                        |          | Search for keywords `star wars`, screen names `@starwars`, or hashtags `#starwars`. You can also use Twitter's [standard search operators](https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators). |
+| `keyword_filter` | `string`  | Keywords         | `true`   |                        |          | Filter tweets based on keywords `star wars`, user mentions `@starwars`, or hashtags `#starwars`. You can also use Twitter's [standard search operators](https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators). |
+| `result_type`    | `string`  | Result Type      | `true`   | Recent, Popular, Mixed | `recent` | Specifies the type of results you want to retrieve.          |
+| `count`          | `integer` | Count (advanced) | `true`   |                        |          | The maximum number of tweets to return per API request (up to `100`) |
+| `from`           | `string`  | From             | `false`  |                        |          | The screen name of the user (e.g., `pipedream`)              |
+| `geocode`        | `string`  | Geocode          | `true`   |                        |          | Returns tweets by users located within a given radius of the given latitude/longitude. The location is preferentially taking from the Geotagging API, but will fall back to their Twitter profile. The parameter value is specified by `latitude,longitude,radius`, where radius units must be specified as either `mi` (miles) or `km` (kilometers). Note that you cannot use the near operator via the API to geocode arbitrary locations; however you can use this geocode parameter to search near geocodes directly. |
+| `screen_name`    | `string`  | Screen Name      | `false`  |                        |          | The screen name of the user (e.g., `pipedream`)              |
+| `trendLocation`  | `string`  | Location         | `false`  | async options          |          |                                                              |
+
+
+
+### Methods
+
+Use common Twitter methods in your components.
+
+ **Want to contribute a new or Twitter method or suggest an edit to an existing one?** [Create a PR](https://pipedream.com) in this repo.
+
+#### `async` _getAuthorizationHeader
+
+Generate an authorization header to sign the request. The data, method and URL passed into this function must exactly match the values submitted in the API request to Twitter.
+
+##### Inputs
+
+| Field    | Type     | Description                                                  |
+| -------- | -------- | ------------------------------------------------------------ |
+| `data`   | `object` | The data to post to Twitter.                                 |
+| `method` | `string` | The method of the HTTP request to sign (e.g., `get`, `post`) |
+| `url`    | `string` | The URL for the request.                                     |
+
+##### Return Value
+
+| Type     | Description                                                |
+| -------- | ---------------------------------------------------------- |
+| `string` | Authorization header to pass in an API request to Twitter. |
+
+
+
