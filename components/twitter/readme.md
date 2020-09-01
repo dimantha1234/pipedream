@@ -3,8 +3,6 @@
 
 From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter.
 
-Use Pipedrem to get events on new Tweets, followers, likes, search mentions and more.
-
 
 
 ## Run Node.js with Twitter auth — try it now
