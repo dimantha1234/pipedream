@@ -16,7 +16,9 @@ pd deploy https://github.com/psavkar/pipedream/blob/readme-test/components/twitt
 
 
 
-## Component Code
+## Code
+
+Following is the open source code for this source component. Deploy and run it for free, submit a PR to contribute, or use it as a template to author and deploy your own custom component.
 
 ```javascript
 const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twitter/twitter.app.js')
