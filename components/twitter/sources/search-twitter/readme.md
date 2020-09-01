@@ -4,9 +4,15 @@
 
 Emit new Tweets when a new tweet matches your search.
 
+
+
+## Run Now
+
+Event sources run on Pipedream's infrastructure and turn any API into an event stream. Inspect events, trigger Pipedream workflows, or consume events in your own app using APIs.
+
 <a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Run%20on%20Pipedream&color=brightgreen&style=for-the-badge"></a>
 
-**Or deploy via CLI:**
+Or deploy via CLI:
 
 ```bash
 pd deploy https://github.com/psavkar/pipedream/blob/readme-test/components/twitter/sources/search-twitter/search-twitter.js
@@ -14,7 +20,7 @@ pd deploy https://github.com/psavkar/pipedream/blob/readme-test/components/twitt
 
 
 
-## Component
+## Component Code
 
 ```javascript
 const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twitter/twitter.app.js')
@@ -95,7 +101,7 @@ module.exports = {
 ```
 
 
-## Sample Events
+## Sample Emits
 
 Following are a sample events emitted by this source.
 
