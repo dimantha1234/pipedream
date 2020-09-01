@@ -2,13 +2,9 @@
 
 <h1 align="left"><strong>Twitter: Search Mentions</strong></h1>
 
-Emit new Tweets when a new tweet matches your search.
+Emit new Tweets that match your search criteria. 
 
-
-
-## Run Now
-
-Event sources run on Pipedream's infrastructure and turn any API into an event stream. Inspect events, trigger Pipedream workflows, or consume events in your own app using APIs.
+Deploy and run this source on Pipedream for free to inspect emitted events, trigger Pipedream workflows, or consume events in your own app using APIs.
 
 <a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Run%20on%20Pipedream&color=brightgreen&style=for-the-badge"></a>
 
