@@ -38,7 +38,7 @@ module.exports = {
 
 ## Event Sources
 
-Event run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
+Event sources run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
 
 | Source                                                | Description                                                  |                                                              |
 | ----------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
