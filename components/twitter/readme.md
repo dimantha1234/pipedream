@@ -189,16 +189,16 @@ Add common Twitter props to your components with pre-defined labels, description
 
  **Want to contribute a new or Twitter prop definition or suggest an edit to an existing one?** [Create a PR](https://pipedream.com) in this repo.
 
-| Name             | Type      | Label            | Optional | Options                | Default  | Description                                                  |
-| ---------------- | --------- | ---------------- | -------- | ---------------------- | -------- | ------------------------------------------------------------ |
-| `q`              | `string`  | Search Term      | `false`  |                        |          | Search for keywords `star wars`, screen names `@starwars`, or hashtags `#starwars`. You can also use Twitter's [standard search operators](https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators). |
-| `keyword_filter` | `string`  | Keywords         | `true`   |                        |          | Filter tweets based on keywords `star wars`, user mentions `@starwars`, or hashtags `#starwars`. You can also use Twitter's [standard search operators](https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators). |
-| `result_type`    | `string`  | Result Type      | `true`   | Recent, Popular, Mixed | `recent` | Specifies the type of results you want to retrieve.          |
-| `count`          | `integer` | Count (advanced) | `true`   |                        |          | The maximum number of tweets to return per API request (up to `100`) |
-| `from`           | `string`  | From             | `false`  |                        |          | The screen name of the user (e.g., `pipedream`)              |
-| `geocode`        | `string`  | Geocode          | `true`   |                        |          | Returns tweets by users located within a given radius of the given latitude/longitude. The location is preferentially taking from the Geotagging API, but will fall back to their Twitter profile. The parameter value is specified by `latitude,longitude,radius`, where radius units must be specified as either `mi` (miles) or `km` (kilometers). Note that you cannot use the near operator via the API to geocode arbitrary locations; however you can use this geocode parameter to search near geocodes directly. |
-| `screen_name`    | `string`  | Screen Name      | `false`  |                        |          | The screen name of the user (e.g., `pipedream`)              |
-| `trendLocation`  | `string`  | Location         | `false`  | async options          |          |                                                              |
+| Label            | Name             | Type      | Optional | Options                | Default  | Description                                                  |
+| ---------------- | ---------------- | --------- | -------- | ---------------------- | -------- | ------------------------------------------------------------ |
+| Search Term      | `q`              | `string`  | `false`  |                        |          | Search for keywords `star wars`, screen names `@starwars`, or hashtags `#starwars`. You can also use Twitter's [standard search operators](https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators). |
+| Keywords         | `keyword_filter` | `string`  | `true`   |                        |          | Filter tweets based on keywords `star wars`, user mentions `@starwars`, or hashtags `#starwars`. You can also use Twitter's [standard search operators](https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/standard-operators). |
+| Result Type      | `result_type`    | `string`  | `true`   | Recent, Popular, Mixed | `recent` | Specifies the type of results you want to retrieve.          |
+| Count (advanced) | `count`          | `integer` | `true`   |                        |          | The maximum number of tweets to return per API request (up to `100`) |
+| From             | `from`           | `string`  | `false`  |                        |          | The screen name of the user (e.g., `pipedream`)              |
+| Geocode          | `geocode`        | `string`  | `true`   |                        |          | Returns tweets by users located within a given radius of the given latitude/longitude. The location is preferentially taking from the Geotagging API, but will fall back to their Twitter profile. The parameter value is specified by `latitude,longitude,radius`, where radius units must be specified as either `mi` (miles) or `km` (kilometers). Note that you cannot use the near operator via the API to geocode arbitrary locations; however you can use this geocode parameter to search near geocodes directly. |
+| Screen Name      | `screen_name`    | `string`  | `false`  |                        |          | The screen name of the user (e.g., `pipedream`)              |
+| Location         | `trendLocation`  | `string`  | `false`  | async()                |          |                                                              |
 
 
 
