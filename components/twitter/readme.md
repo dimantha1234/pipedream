@@ -183,9 +183,7 @@ Add common Twitter props to your components with pre-defined labels, description
 
 ### Methods
 
-Use common Twitter methods in your components.
-
- **Want to contribute a new or Twitter method or suggest an edit to an existing one?** [Create a PR](https://pipedream.com) in this repo.
+Use common Twitter methods in your components. Want to contribute a new or Twitter method or suggest an edit to an existing one? [Create a PR](https://pipedream.com) in this repo.
 
 #### `async` _getAuthorizationHeader
 
