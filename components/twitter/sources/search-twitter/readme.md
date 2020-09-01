@@ -737,7 +737,7 @@ Click to connect your Twitter account and use tokens in code. Pipedream manages 
 
 
 
-## Commonly Used ` npm` Packages
+## Commonly Paired ` npm` Packages
 
 | Source                              | Description                                                  | Popularity |
 | ----------------------------------- | ------------------------------------------------------------ | ---------- |
