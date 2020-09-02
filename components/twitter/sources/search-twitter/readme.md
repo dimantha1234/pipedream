@@ -6,8 +6,6 @@ Emit new Tweets that match your search criteria.
 
 [TOC]
 
-
-
 ## Deploy
 
 Deploy and run this source on Pipedream for free to inspect emitted events, trigger Pipedream workflows, or consume events in your own app using APIs.
