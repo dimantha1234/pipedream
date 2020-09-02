@@ -14,8 +14,6 @@ Or deploy via CLI:
 pd deploy https://github.com/psavkar/pipedream/blob/readme-test/components/twitter/sources/search-twitter/search-twitter.js
 ```
 
-
-
 ## Component Code
 
 Following is the open source code for this source component. Deploy and run it for free, submit a PR to contribute, or use it as a template to author and deploy your own custom component.
@@ -97,6 +95,35 @@ module.exports = {
   },
 }
 ```
+
+## APIs
+
+### Create Source
+
+```bash
+curl -d '{"component_url":"https://github.com/PipedreamHQ/pipedream/blob/master/components/http/http.js"}' \
+  -H "Authorization: Bearer <API-KEY>" \
+  -H "Content-Type: application/json" \
+  "https://api.pipedream.com/v1/sources"
+```
+
+### Get Recent Events
+
+```bash
+curl -H "Authorization: Bearer <API-KEY>" \
+  "https://api.pipedream.com/v1/sources/<SOURCE-ID>/event_summaries?expand=event"
+```
+
+
+
+### Stream Events in Real-Time
+
+```bash
+curl -H "Authorization: Bearer <API-KEY>" \
+  "https://api.pipedream.com/sources/<SOURCE-ID>/sse"
+```
+
+
 
 ## Configuration
 
