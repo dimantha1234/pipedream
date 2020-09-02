@@ -2,7 +2,7 @@
 
 <h1 align="left"><strong>Twitter: Search Mentions</strong></h1>
 
-Emit new Tweets that match your search criteria. 
+Emit new Tweets that match your search criteria. Then inspect emitted events, trigger Pipedream workflows, or consume events in your own app via REST or real-time APIs.
 
 - [Deploy](#deploy)
 - [Configure](#configure)
