@@ -4,7 +4,20 @@
 
 Emit new Tweets that match your search criteria. 
 
-[TOC]
+- [Deploy](#deploy)
+- [Configure](#configure)
+  - [Authentication](#authentication)
+  - [Props](#props)
+- [Consume Events](#consume-events)
+- [Code](#code)
+- [Sample Emits](#sample-emits)
+  - [Original Tweet](#original-tweet)
+  - [Original Tweet with Media](#original-tweet-with-media)
+  - [Retweet](#retweet)
+- [Popular Integrations](#popular-integrations)
+- [Commonly Paired Actions](#commonly-paired-actions)
+- [Commonly Paired Apps](#commonly-paired-apps)
+- [Commonly Paired ` npm` Packages](#commonly-paired-npm-packages)
 
 ## Deploy
 
