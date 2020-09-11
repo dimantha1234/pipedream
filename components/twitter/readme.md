@@ -192,12 +192,29 @@ async _makeRequest(config, attempt = 0) {
 },
 ```
 
+## About Twitter
 
-## Connecting Your Account
+From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. 
 
-Connect your Twitter account with a click using Pipedream's browser-based OAuth flow. You can initiate auth at https://pipedream.com/apps or via the CLI.
+### Name Slug
 
-### Scopes
+`twitter`
+
+### Integration Type
+
+OAuth 1.0A
+
+<!--
+| Key     | Value           |
+| ------- | --------------- |
+| Name Slug | `twitter` |
+| Integration Type | OAuth 1.0A              |
+| Popularity | 9.8        |
+-->
+
+<!--Connect your Twitter account with a click using Pipedream's browser-based OAuth flow. You can initiate auth at https://pipedream.com/apps or via the CLI.-->
+
+### Integration Scopes
 
 Pipedream requests the following scopes when you connect your account. [Contact us](https://pipedream.com) to request additional scopes.
 
