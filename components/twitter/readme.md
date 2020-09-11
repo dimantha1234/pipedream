@@ -347,7 +347,7 @@ None
 
 Not required
 
-## About Pipedream?
+## About Pipedream
 
 Pipedream is a serverless integration and compute platform with 100k+ developers, billions of events processed, and 300+ integrated apps with managed auth. 
 
