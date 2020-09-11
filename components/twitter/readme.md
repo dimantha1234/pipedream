@@ -1,8 +1,7 @@
 <p align="center">
   <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align="center">    
   <h1 align="center"><strong>Twitter</strong></h1>
-  <p align="center">From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. And Pipedream is the fastest way to integrate with Twitter APIs.</p>
-  <p align="center">Use Twitter as an <a href="#event-sources">event source</a> to trigger code on any Twitter event (e.g., new Tweets) or as an <a href="#actions">action</a> to connect to any API (e.g., post a Tweet).</p>
+  <p align="center">From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. Use Twitter as an <a href="#event-sources">event source</a> to trigger code on any Twitter event (e.g., new Tweets) or as an <a href="#actions">action</a> to connect to any API (e.g., post a Tweet).</p>
 </p>
 
 <!-- with advanced controls to manage concurrency, delivery rates and de-duplication of events-->
