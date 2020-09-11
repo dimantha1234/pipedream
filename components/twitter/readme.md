@@ -21,7 +21,7 @@ module.exports = {
   }, 
   async run(event) {
     const response = await require("@pipedreamhq/platform").axios(this, {
-      url: `https://api.twitter.com/1.1/account/verify_credentials.json`,
+      url: `/1.1/account/verify_credentials.json`,
     }, {
       token: {
         key: this.twitter.$auth.oauth_access_token,
