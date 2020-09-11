@@ -1,7 +1,7 @@
 <p align="center">
   <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align="center">    
   <h1 align="center"><strong>The fastest way to integrate Twitter APIs and run code</strong></h1>
-  <p align="center">Use Twitter as an <a href="#event-sources">event source</a> to trigger code on any Twitter event (e.g., new Tweets) or as an <a href="#actions">action</a> to connect to any API (e.g., post a Tweet).</p>
+  <p align="center">Use Twitter as an <a href="#event-sources">source</a> to trigger any code on any event (e.g., new Tweets) or as an <a href="#actions">action</a> to connect to any API (e.g., post a Tweet).</p>
 </p>
 
 <!-- with advanced controls to manage concurrency, delivery rates and de-duplication of events-->
