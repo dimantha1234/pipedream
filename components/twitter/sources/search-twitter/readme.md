@@ -3,7 +3,7 @@
   <h1 align="center"><strong>Twitter: Search Mentions</strong></h1>
   <p align="center">Emit new Tweets that match your search criteria. Inspect emitted events, trigger Pipedream workflows, or consume events in your own app using APIs.</p>
   <p align="center"><a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Run%20on%20Pipedream&color=brightgreen&style=for-the-badge" align="center"></a></p>
-  <p align="center"><a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=View%20Source%20Code&color=lightgrey&style=for-the-badge" align="center"></a></p>
+  <p align="center"><a href="https://github.com/psavkar/pipedream/blob/readme-test/components/twitter/sources/search-twitter/search-twitter.js"><img src="https://img.shields.io/static/v1?label=&message=View%20Source%20Code&color=lightgrey&style=for-the-badge" align="center"></a></p>
 </p>
 
 
