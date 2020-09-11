@@ -8,6 +8,22 @@
 
 <!-- with advanced controls to manage concurrency, delivery rates and de-duplication of events-->
 
+
+## Twitter Sources
+
+Event sources run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
+
+| Source                                            | Description                                                  | Popularity |
+| ------------------------------------------------- | ------------------------------------------------------------ | ---------- |
+| [Search Mentions](./sources/search-mentions)      | Emit new Tweets when a new tweet matches your search.        | 9.9        |
+| [New Tweets by User](./sources/search-mentions)   | Emit new Tweets when when there is a new Tweet from a specific user. | 9.8        |
+| [New Followers](./sources/search-mentions)        | Emit new Tweets when when you get a new follower.            | 7.2        |
+| [My Liked Tweets](./sources/search-mentions)      | Emit new Tweets when when you get a new follower.            | 6.3        |
+| [New Follower of User](./sources/search-mentions) | Emit new Tweets when when you get a new follower.            | 5.5        |
+
+**[View All Sources (8)](./sources/search-mentions)**
+
+
 ## What is Pipedream?
 
 Pipedream is a serverless integration and compute platform with 100k+ developers, billions of events processed, and 300+ integrated apps with managed auth. 
@@ -75,21 +91,6 @@ curl -d '{"component_url":"https://github.com/PipedreamHQ/pipedream/blob/master/
   -H "Content-Type: application/json" \
   "https://api.pipedream.com/v1/sources"
 ```
-
-## Twitter Sources
-
-Event sources run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
-
-| Source                                            | Description                                                  | Popularity |
-| ------------------------------------------------- | ------------------------------------------------------------ | ---------- |
-| [Search Mentions](./sources/search-mentions)      | Emit new Tweets when a new tweet matches your search.        | 9.9        |
-| [New Tweets by User](./sources/search-mentions)   | Emit new Tweets when when there is a new Tweet from a specific user. | 9.8        |
-| [New Followers](./sources/search-mentions)        | Emit new Tweets when when you get a new follower.            | 7.2        |
-| [My Liked Tweets](./sources/search-mentions)      | Emit new Tweets when when you get a new follower.            | 6.3        |
-| [New Follower of User](./sources/search-mentions) | Emit new Tweets when when you get a new follower.            | 5.5        |
-
-**[View All Sources (8)](./sources/search-mentions)**
-
 
 
 <!--
