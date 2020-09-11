@@ -10,9 +10,13 @@
 
 Connect your Twitter account to Pipedream and use tokens in code to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process.
 
-- Instantiate open source components in seconds or author your own
-- Trigger any code (e.g., AWS Lambda) or hosted Pipdream workflows on every event
+- Instantiate open source components in seconds or author your own (trigger on HTTP requests, timers, cron schedules, or manually)
+- Emit data on each event to inspect it, trigger Pipedream hosted workflows or access it outside of Pipedream via API
 - Customize concurrency and rate limits of emitted events
+- Connect to 300+ apps using Pipedream managed auth
+- Use most npm packages with no npm install or package.json required
+- Store and retrieve state using the built-in key-value store
+- Accept user input on deploy via CLI, API, or UI
 
 ```javascript
 const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twitter/twitter.app.js')
