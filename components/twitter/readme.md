@@ -8,11 +8,11 @@
 
 ## What is Pipedream?
 
+Pipedream is a serverless integration and compute platform with 100k+ developers, billions of events processed, and 300+ integrated apps with managed auth. Write your own code or instantiate pre-built, open source components.
+
 - Trigger Node.js on HTTP requests, timers, cron schedules, or manually
 - Emit data on each event to inspect it or trigger code in Pipedream or your own app
 - Manage concurrency, delivery rates and de-duplication of events
-- Connect to 300+ apps using Pipedream managed auth
-- Use most npm packages with no npm install or package.json required
 - Store and retrieve state using the built-in key-value store
 
 ## Run Node.js with Twitter auth — try it now
