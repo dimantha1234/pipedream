@@ -1,6 +1,6 @@
 <p align="center">
   <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align="center">    
-  <h1 align="center"><strong>Twitter: Search Mentions</strong></h1>
+  <h1 align="center"><strong>Twitter</strong></h1>
   <p align="center">From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter.</p>
 </p>
 
