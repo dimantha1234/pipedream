@@ -1,7 +1,7 @@
 <p align="center">
   <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align="center">    
   <h1 align="center"><strong>Twitter</strong></h1>
-  <p align="center">From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter.</p>
+  <p align="center">From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. And Pipedream is the fastest way to integrate with Twitter and trigger code on any Twitter event.</p>
 </p>
 
 ## Run Node.js with Twitter auth — try it now
@@ -16,15 +16,10 @@ module.exports = {
   description: "Return your Twitter account details on each invocation", 
   version: "0.0.1",
   props: {
-    twitter = {
-      app: "twitter",
-      type: "app"
-    },
+    twitter,
   }, 
   async run(event) {
-    this.$emit(this.twitter._makeRequest({
-      url: `https://api.twitter.com/1.1/account/verify_credentials.json`,
-    }))
+    this.$emit(this.twitter.testRequest())
   }
 }
 
