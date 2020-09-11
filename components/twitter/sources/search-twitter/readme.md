@@ -3,6 +3,7 @@
   <h1 align="center"><strong>Twitter: Search Mentions</strong></h1>
   <p align="center">Emit new Tweets that match your search criteria. Inspect emitted events, trigger Pipedream workflows, or consume events in your own app using APIs.</p>
   <p align="center"><a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Run%20on%20Pipedream&color=brightgreen&style=for-the-badge" align="center"></a></p>
+  <p align="center"><a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=View%20Source%20Code&color=lightgrey&style=for-the-badge" align="center"></a></p>
 </p>
 
 
@@ -21,87 +22,6 @@ curl -d '{"component_url":"https://github.com/PipedreamHQ/pipedream/blob/master/
   "https://api.pipedream.com/v1/sources"
 ```
 
-## Code
-
-Following is the open source code for this source component. Deploy and run it for free, submit a PR to contribute, or use it as a template to author and deploy your own custom component.
-
-```javascript
-const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twitter/twitter.app.js')
-const moment = require('moment')
- 
-module.exports = {
-  name: "Search Mentions",
-  description: "Emit new Tweets that matches your search criteria", 
-  version: "0.0.1",
-  props: {
-    db: "$.service.db",
-    twitter,
-    q: { propDefinition: [twitter, "q"] },
-    result_type: { propDefinition: [twitter, "result_type"] },
-    includeRetweets: { propDefinition: [twitter, "includeRetweets"] },
-    includeReplies: { propDefinition: [twitter, "includeReplies"] },
-    lang: { propDefinition: [twitter, "lang"] },
-    locale: { propDefinition: [twitter, "locale"] },
-    geocode: { propDefinition: [twitter, "geocode"] },
-    enrichTweets: { propDefinition: [twitter, "enrichTweets"] },
-    count: { propDefinition: [twitter, "count"] },
-    maxRequests: { propDefinition: [twitter, "maxRequests"] },
-    timer: {
-      type: "$.interface.timer",
-      default: {
-        intervalSeconds: 60 * 15,
-      },
-    }, 
-  }, 
-  async run(event) {
-    const since_id = this.db.get("since_id")
-    const { lang, locale, geocode, result_type, enrichTweets, includeReplies, includeRetweets, maxRequests, count } = this
-    let q = this.q, max_id, limitFirstPage
-
-    if (!since_id) {
-      limitFirstPage = true
-    } else {
-      limitFirstPage = false
-    }
- 
-    // run paginated search
-    const tweets = await this.twitter.paginatedSearch({ 
-      q, 
-      since_id, 
-      lang, 
-      locale, 
-      geocode, 
-      result_type, 
-      enrichTweets, 
-      includeReplies, 
-      includeRetweets, 
-      maxRequests,
-      count,
-      limitFirstPage,
-    })
-
-    // emit array of tweet objects
-    if(tweets.length > 0) {
-      tweets.sort(function(a, b){return a.id - b.id})
-
-      tweets.forEach(tweet => {
-        this.$emit(tweet, {
-          ts: moment(tweet.created_at, 'ddd MMM DD HH:mm:ss Z YYYY').valueOf(),
-          summary: tweet.full_text || tweet.text,
-          id: tweet.id_str,
-        })
-
-        if (tweet.id_str > max_id || !max_id) {
-          max_id = tweet.id_str
-        }
-      })
-    }
-    if (max_id) {
-      this.db.set("since_id", max_id)
-    }
-  },
-}
-```
 
 ## Configure
 
@@ -740,6 +660,88 @@ Following are a sample events emitted by this source.
   "lang": "en",
   "created_at_timestamp": 1596835796000,
   "created_at_iso8601": "2020-08-07T21:29:56.000Z"
+}
+```
+
+## Code
+
+Following is the open source code for this source component. Deploy and run it for free, submit a PR to contribute, or use it as a template to author and deploy your own custom component.
+
+```javascript
+const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twitter/twitter.app.js')
+const moment = require('moment')
+ 
+module.exports = {
+  name: "Search Mentions",
+  description: "Emit new Tweets that matches your search criteria", 
+  version: "0.0.1",
+  props: {
+    db: "$.service.db",
+    twitter,
+    q: { propDefinition: [twitter, "q"] },
+    result_type: { propDefinition: [twitter, "result_type"] },
+    includeRetweets: { propDefinition: [twitter, "includeRetweets"] },
+    includeReplies: { propDefinition: [twitter, "includeReplies"] },
+    lang: { propDefinition: [twitter, "lang"] },
+    locale: { propDefinition: [twitter, "locale"] },
+    geocode: { propDefinition: [twitter, "geocode"] },
+    enrichTweets: { propDefinition: [twitter, "enrichTweets"] },
+    count: { propDefinition: [twitter, "count"] },
+    maxRequests: { propDefinition: [twitter, "maxRequests"] },
+    timer: {
+      type: "$.interface.timer",
+      default: {
+        intervalSeconds: 60 * 15,
+      },
+    }, 
+  }, 
+  async run(event) {
+    const since_id = this.db.get("since_id")
+    const { lang, locale, geocode, result_type, enrichTweets, includeReplies, includeRetweets, maxRequests, count } = this
+    let q = this.q, max_id, limitFirstPage
+
+    if (!since_id) {
+      limitFirstPage = true
+    } else {
+      limitFirstPage = false
+    }
+ 
+    // run paginated search
+    const tweets = await this.twitter.paginatedSearch({ 
+      q, 
+      since_id, 
+      lang, 
+      locale, 
+      geocode, 
+      result_type, 
+      enrichTweets, 
+      includeReplies, 
+      includeRetweets, 
+      maxRequests,
+      count,
+      limitFirstPage,
+    })
+
+    // emit array of tweet objects
+    if(tweets.length > 0) {
+      tweets.sort(function(a, b){return a.id - b.id})
+
+      tweets.forEach(tweet => {
+        this.$emit(tweet, {
+          ts: moment(tweet.created_at, 'ddd MMM DD HH:mm:ss Z YYYY').valueOf(),
+          summary: tweet.full_text || tweet.text,
+          id: tweet.id_str,
+        })
+
+        if (tweet.id_str > max_id || !max_id) {
+          max_id = tweet.id_str
+        }
+      })
+    }
+    if (max_id) {
+      this.db.set("since_id", max_id)
+    }
+  },
 }
 ```
 
