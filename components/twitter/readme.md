@@ -8,7 +8,9 @@
 
 <!--## Integrate with Twitter using Pipedream-->
 
-Connect your Twitter account to Pipedream and use tokens in code to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process. Following is a simple example that you can instantiate via Pipedream's UI, CLI or API and it demonstrates how to connect to a Twitter API and emit an event (this code is in [example.js](example.js) in this folder):
+Connect your Twitter account to Pipedream and use tokens in code to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process. 
+
+Following is a simple example that you can instantiate via Pipedream's UI, CLI or API and it demonstrates how to connect to a Twitter API and emit an event (this code is in [example.js](example.js) in this folder):
 
 ```javascript
 const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twitter/twitter.app.js')
@@ -48,13 +50,13 @@ module.exports = {
 *Deploy using Pipdream CLI*
 
 ```bash
-pd deploy https://github.com/psavkar/pipedream/blob/readme-test/components/twitter/sources/search-twitter/search-twitter.js
+pd deploy https://github.com/psavkar/pipedream/blob/readme-test/components/twitter/example.js
 ```
 
 *Deploy using Pipdream API*
 
 ```bash
-curl -d '{"component_url":"https://github.com/PipedreamHQ/pipedream/blob/master/components/http/http.js"}' \
+curl -d '{"component_url":"https://github.com/PipedreamHQ/pipedream/blob/master/components/twitter/example.js"}' \
   -H "Authorization: Bearer <API-KEY>" \
   -H "Content-Type: application/json" \
   "https://api.pipedream.com/v1/sources"
