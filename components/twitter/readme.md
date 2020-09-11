@@ -8,13 +8,14 @@
 
 <!-- with advanced controls to manage concurrency, delivery rates and de-duplication of events-->
 
-## Run Node.js with Twitter auth — try it now
-
+## Connect Your Twitter Account
 <!--## Integrate with Twitter using Pipedream-->
 
 Connect your Twitter account to Pipedream and use tokens in code to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process. 
 
 <p align="left"><a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Connect%20Account&color=brightgreen&style=for-the-badge" align="center"></a></p>
+
+## Run Node.js with Twitter auth — try it now
 
 Following is an example that demonstrates how to connect to a Twitter API and emit an event (this code is in [example.js](example.js) in this folder). Deploy it for free using Pipedream's UI, CLI or API.
 
