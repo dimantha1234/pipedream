@@ -8,7 +8,7 @@
 
 ## Integrate with Twitter using Pipedream
 
-Just connect your Twitter account to Pipedream and use tokens in code to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process.
+Connect your Twitter account to Pipedream and use tokens in code to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process.
 
 - Instantiate open source components in seconds or author your own
 - Trigger any code (e.g., AWS Lambda) or hosted Pipdream workflows on every event
