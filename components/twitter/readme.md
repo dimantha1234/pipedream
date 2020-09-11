@@ -76,7 +76,7 @@ curl -d '{"component_url":"https://github.com/PipedreamHQ/pipedream/blob/master/
   "https://api.pipedream.com/v1/sources"
 ```
 
-## Sources
+## Twitter Sources
 
 Event sources run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
 
@@ -93,7 +93,7 @@ Event sources run on Pipedream's infrastructure and turn any API into an event s
 
 
 
-## Actions
+## Twitter Actions
 
 Actions are reusable components that implement popular operations. You can execute actions on demand or trigger and orchestrate their execution in workflows.
 
