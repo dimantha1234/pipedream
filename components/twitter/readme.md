@@ -1,8 +1,19 @@
 <p align="center">
   <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align="center">    
   <h1 align="center"><strong>Twitter</strong></h1>
-  <p align="center">From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. Pipedream is the fastest way to integrate with Twitter APIs and trigger code on any event with advanced controls to manage concurrency, delivery rates and de-duplication of events.</p>
+  <p align="center">From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. Pipedream is the fastest way to integrate with Twitter APIs and trigger code on any event.</p>
 </p>
+
+<!-- with advanced controls to manage concurrency, delivery rates and de-duplication of events-->
+
+## What is Pipedream?
+
+- Trigger Node.js on HTTP requests, timers, cron schedules, or manually
+- Emit data on each event to inspect it or trigger code in Pipedream or your own app
+- Manage concurrency, delivery rates and de-duplication of events
+- Connect to 300+ apps using Pipedream managed auth
+- Use most npm packages with no npm install or package.json required
+- Store and retrieve state using the built-in key-value store
 
 ## Run Node.js with Twitter auth — try it now
 
