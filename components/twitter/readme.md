@@ -10,7 +10,7 @@
 
 Connect your Twitter account to Pipedream and use tokens in code to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process. 
 
-Following is an example that demonstrates how to connect to a Twitter API and emit an event (this code is in [example.js](example.js) in this folder). You can deploy it using Pipedream's UI, CLI or API.
+Following is an example that demonstrates how to connect to a Twitter API and emit an event (this code is in [example.js](example.js) in this folder). Deploy it for free using Pipedream's UI, CLI or API.
 
 ```javascript
 const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twitter/twitter.app.js')
