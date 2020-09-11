@@ -226,7 +226,7 @@ async _makeRequest(config, attempt = 0) {
 ```
 
 
-## Authorization
+## Connecting Your Account
 
 Connect your Twitter account with a click using Pipedream's browser-based OAuth flow. You can initiate auth at https://pipedream.com/apps or via the CLI.
 
