@@ -224,9 +224,7 @@ Pipedream requests the following scopes when you connect your account. [Contact 
 
 ### OAuth Configuration
 
-Twitter’s API relies on the `OAuth 1.0a` protocol. At a very simplified level, Twitter’s implementation requires that requests needing `authorization` contain an additional HTTP Authorization header.
-
-Pipedream integrates with the following endpoints using the configuration below when you connect your account.
+Twitter’s API relies on the `OAuth 1.0a` protocol. At a very simplified level, Twitter’s implementation requires that requests needing `authorization` contain an additional HTTP Authorization header. Pipedream integrates with Twitter using the following configuration when you connect your account.
 
 #### Request Token
 
