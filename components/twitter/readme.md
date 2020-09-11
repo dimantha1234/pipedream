@@ -238,7 +238,7 @@ From breaking news and entertainment to sports and politics, from big events to 
 
 `twitter`
 
-### Integration Type
+### Auth Strategy
 
 OAuth 1.0A
 
@@ -252,7 +252,7 @@ OAuth 1.0A
 
 <!--Connect your Twitter account with a click using Pipedream's browser-based OAuth flow. You can initiate auth at https://pipedream.com/apps or via the CLI.-->
 
-### Integration Scopes
+### Scopes
 
 Pipedream requests the following scopes when you connect your account. [Contact us](https://pipedream.com) to request additional scopes.
 
