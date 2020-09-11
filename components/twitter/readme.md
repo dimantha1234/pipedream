@@ -4,7 +4,7 @@
   <p align="center">Use Twitter as an <a href="#event-sources">source</a> to trigger any code on any event (e.g., new Tweets) or as an <a href="#actions">action</a> to connect to any API (e.g., post a Tweet).</p>
 </p>
 
-![twitter](twitter-app.png)
+![twitter](https://res.cloudinary.com/db4fbls0o/image/upload/v1599853828/test/twitter-app-v2.png)
 
 <!-- with advanced controls to manage concurrency, delivery rates and de-duplication of events-->
 
