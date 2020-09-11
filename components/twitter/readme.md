@@ -77,7 +77,7 @@ curl -d '{"component_url":"https://github.com/PipedreamHQ/pipedream/blob/master/
   "https://api.pipedream.com/v1/sources"
 ```
 
-## Building Blocks for Components
+## Using Twitter in Components
 
 ### Prop Definitions
 
