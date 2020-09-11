@@ -1,14 +1,10 @@
-<img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png">    
+<p align="center">
+  <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align="center">    
+  <h1 align="center"><strong>Twitter: Search Mentions</strong></h1>
+  <p align="center">Emit new Tweets that match your search criteria. Inspect emitted events, trigger Pipedream workflows, or consume events in your own app using APIs.</p>
+  <p align="center"><a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Run%20on%20Pipedream&color=brightgreen&style=for-the-badge" align="center"></a></p>
+</p>
 
-<h1 align="left"><strong>Twitter: Search Mentions</strong></h1>
-
-Emit new Tweets that match your search criteria. 
-
-Deploy and run this source on Pipedream for free to inspect emitted events, trigger Pipedream workflows, or consume events in your own app using APIs.
-
-*Deploy using Pipdream UI*
-
-<a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Run%20on%20Pipedream&color=brightgreen&style=for-the-badge"></a>
 
 *Deploy using Pipdream CLI*
 
