@@ -16,9 +16,9 @@ Connect your Twitter account to Pipedream to use any Twitter API in seconds. Pip
 
 | Key     | Description                                                |
 | -------- | ---------------------------------------------------------- |
-| `oauth_access_token` | Authorization header to pass in an API request to Twitter. |
-| `oauth_refresh_token` | Authorization header to pass in an API request to Twitter. |
-| `oauth_signer_url` | Authorization header to pass in an API request to Twitter. |
+| `oauth_access_token` | OAuth access token |
+| `oauth_refresh_token` | OAuth refresh token (this is automatically refreshed by Pipedream) |
+| `oauth_signer_url` | Endpoint to generate the `authorization` header required by Twitter |
 
 
 <p align="left"><a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Connect%20Account&color=brightgreen&style=for-the-badge" align="center"></a></p>
