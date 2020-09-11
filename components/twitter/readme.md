@@ -343,3 +343,6 @@ Pipedream is a serverless integration and compute platform with 100k+ developers
 - Manage concurrency, delivery rates and de-duplication of events
 - Use the built-in key-value store to manage state across invocations
 
+## Contributing
+
+Deploy or contribute to curated open source components in Pipedream's Github repo. Or author, deploy and maintain your own via your standard CI/CD process.
