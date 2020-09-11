@@ -77,7 +77,7 @@ curl -d '{"component_url":"https://github.com/PipedreamHQ/pipedream/blob/master/
 ```
 
 
-## Twitter Sources
+## Top Sources
 
 Event sources run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
 
@@ -92,7 +92,7 @@ Event sources run on Pipedream's infrastructure and turn any API into an event s
 **[View All Sources (8)](./sources/search-mentions)**
 
 
-## Twitter Actions
+## Top Actions
 
 Actions are reusable components that implement popular operations. You can execute actions on demand or trigger and orchestrate their execution in workflows.
 
@@ -107,7 +107,7 @@ Actions are reusable components that implement popular operations. You can execu
 **[View All Actions (15)](./sources/search-mentions)**
 
 
-## ` npm` Packages Used with Twitter
+## Top ` npm` Packages
 
 | Source                              | Description                                                  | Popularity |
 | ----------------------------------- | ------------------------------------------------------------ | ---------- |
