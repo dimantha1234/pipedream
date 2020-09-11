@@ -13,8 +13,8 @@ const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twi
 const axios = require('axios')
  
 module.exports = {
-  name: "Twitter Example",
-  description: "Return your Twitter account details on each invocation", 
+  name: "Twitter Code Sample",
+  description: "Code sample demonstrating how to connect to the Twitter API using Pipedream managed auth.", 
   version: "0.0.1",
   props: {
     twitter,
@@ -24,10 +24,10 @@ module.exports = {
       url: `https://api.twitter.com/1.1/account/verify_credentials.json`,
     }, {
       token: {
-        key: auths.twitter.oauth_access_token,
-        secret: auths.twitter.oauth_refresh_token,
+        key: this.twitter.$auth.oauth_access_token,
+        secret: this.twitter.$auth.oauth_refresh_token,
       },
-      oauthSignerUri: auths.twitter.oauth_signer_uri,
+      oauthSignerUri: this.twitter.$auth.oauth_signer_uri,
     })
     this.$emit(response.data)
   }
