@@ -8,16 +8,6 @@
 
 <!-- with advanced controls to manage concurrency, delivery rates and de-duplication of events-->
 
-## What is Pipedream?
-
-Pipedream is a serverless integration and compute platform with 100k+ developers, billions of events processed, and 300+ integrated apps with managed auth. 
-
-- Start from scratch or use pre-built, open source components
-- Trigger Node.js on HTTP requests, timers, cron schedules, or manually
-- Emit data on each event to inspect it or trigger code in Pipedream or your own app
-- Manage concurrency, delivery rates and de-duplication of events
-- Use the built-in key-value store to manage state across invocations
-
 ## Run Node.js with Twitter auth — try it now
 
 <!--## Integrate with Twitter using Pipedream-->
@@ -342,4 +332,14 @@ None
 #### Refresh Token Request
 
 Not required
+
+## What is Pipedream?
+
+Pipedream is a serverless integration and compute platform with 100k+ developers, billions of events processed, and 300+ integrated apps with managed auth. 
+
+- Start from scratch or use pre-built, open source components
+- Trigger Node.js on HTTP requests, timers, cron schedules, or manually
+- Emit data on each event to inspect it or trigger code in Pipedream or your own app
+- Manage concurrency, delivery rates and de-duplication of events
+- Use the built-in key-value store to manage state across invocations
 
