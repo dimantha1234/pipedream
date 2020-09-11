@@ -192,9 +192,7 @@ async _makeRequest(config, attempt = 0) {
 },
 ```
 
-## About Twitter
-
-From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. 
+## Integration Details
 
 ### Name Slug
 
@@ -347,8 +345,11 @@ Actions are reusable components that implement popular operations. You can execu
 | [querystring]()                     | Parse and stringify URL query strings                        | 8.7        |
 
 
+## About Twitter
 
-## What is Pipedream?
+From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. 
+
+## About Pipedream?
 
 Pipedream is a serverless integration and compute platform with 100k+ developers, billions of events processed, and 300+ integrated apps with managed auth. 
 
