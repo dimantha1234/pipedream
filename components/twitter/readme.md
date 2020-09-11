@@ -11,7 +11,15 @@
 ## Connect Your Twitter Account
 <!--## Integrate with Twitter using Pipedream-->
 
-Connect your Twitter account to Pipedream and use tokens in code to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process. 
+Connect your Twitter account to Pipedream and use tokens in code to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process, and makes the following keys available on the `$auth` object in component code:
+
+
+| Key     | Description                                                |
+| -------- | ---------------------------------------------------------- |
+| `oauth_access_token` | Authorization header to pass in an API request to Twitter. |
+| `oauth_refresh_token` | Authorization header to pass in an API request to Twitter. |
+| `oauth_signer_url` | Authorization header to pass in an API request to Twitter. |
+
 
 <p align="left"><a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Connect%20Account&color=brightgreen&style=for-the-badge" align="center"></a></p>
 
@@ -109,17 +117,6 @@ Actions are reusable components that implement popular operations. You can execu
 
 
 ## Using Twitter in Components
-
-### Auth
-
-Pipedream manages the OAuth handshake and ongoing refresh process. Reference the following keys in code.
-
-| Type     | Description                                                |
-| -------- | ---------------------------------------------------------- |
-| `oauth_access_token` | Authorization header to pass in an API request to Twitter. |
-| `oauth_refresh_token` | Authorization header to pass in an API request to Twitter. |
-| `oauth_signer_url` | Authorization header to pass in an API request to Twitter. |
-
 
 ### Prop Definitions
 
