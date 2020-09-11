@@ -101,6 +101,15 @@ Actions are reusable components that implement popular operations. You can execu
 
 ## Using Twitter in Components
 
+### Auth
+
+Pipedream manages the OAuth handshake and ongoing refresh process. Reference the following keys in code.
+
+| Type     | Description                                                |
+| -------- | ---------------------------------------------------------- |
+| `oauth_access_token` | Authorization header to pass in an API request to Twitter. |
+| `oauth_refresh_token` | Authorization header to pass in an API request to Twitter. |
+| `oauth_signer_url` | Authorization header to pass in an API request to Twitter. |
 
 
 ### Prop Definitions
@@ -119,7 +128,6 @@ Add common Twitter props to your components with pre-defined labels, description
 | Geocode          | `geocode`        | `string`  | `true`   |                        |          | Returns tweets by users located within a given radius of the given latitude/longitude. The location is preferentially taking from the Geotagging API, but will fall back to their Twitter profile. The parameter value is specified by `latitude,longitude,radius`, where radius units must be specified as either `mi` (miles) or `km` (kilometers). Note that you cannot use the near operator via the API to geocode arbitrary locations; however you can use this geocode parameter to search near geocodes directly. |
 | Screen Name      | `screen_name`    | `string`  | `false`  |                        |          | The screen name of the user (e.g., `pipedream`)              |
 | Location         | `trendLocation`  | `string`  | `false`  | async()                |          |                                                              |
-
 
 
 ### Methods
@@ -218,7 +226,7 @@ async _makeRequest(config, attempt = 0) {
 ```
 
 
-## OAuth Configuration
+## Authorization
 
 Connect your Twitter account with a click using Pipedream's browser-based OAuth flow. You can initiate auth at https://pipedream.com/apps or via the CLI.
 
