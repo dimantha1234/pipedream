@@ -11,7 +11,7 @@
 ## Connect Your Twitter Account
 <!--## Integrate with Twitter using Pipedream-->
 
-Connect your Twitter account to Pipedream and use tokens in code to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process, and makes the following keys available on the `$auth` object in component code:
+Connect your Twitter account to Pipedream to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process, and makes the following keys available on the `$auth` object in component code:
 
 
 | Key     | Description                                                |
