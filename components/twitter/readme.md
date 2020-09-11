@@ -10,6 +10,7 @@ Click to connect your Twitter account and use tokens in code. Pipedream manages 
 
 ```javascript
 const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twitter/twitter.app.js')
+const axios = require('axios')
  
 module.exports = {
   name: "Twitter Example",
@@ -19,7 +20,16 @@ module.exports = {
     twitter,
   }, 
   async run(event) {
-    this.$emit(this.twitter.testRequest())
+    const response = await require("@pipedreamhq/platform").axios(this, {
+      url: `https://api.twitter.com/1.1/account/verify_credentials.json`,
+    }, {
+      token: {
+        key: auths.twitter.oauth_access_token,
+        secret: auths.twitter.oauth_refresh_token,
+      },
+      oauthSignerUri: auths.twitter.oauth_signer_uri,
+    })
+    this.$emit(response.data)
   }
 }
 
