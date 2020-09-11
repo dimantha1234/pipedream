@@ -77,8 +77,9 @@ curl -d '{"component_url":"https://github.com/PipedreamHQ/pipedream/blob/master/
   "https://api.pipedream.com/v1/sources"
 ```
 
+## Using Twitter in Components
 
-## Prop Definitions
+### Prop Definitions
 
 Add common Twitter props to your components with pre-defined labels, descriptions, default values, validation logic and more. You can over-ride any values when you include them in your own component.
 
@@ -96,7 +97,7 @@ Add common Twitter props to your components with pre-defined labels, description
 | Location         | `trendLocation`  | `string`  | `false`  | async()                |          |                                                              |
 
 
-## Methods
+### Methods
 
 Use common Twitter methods in your components. Want to contribute a new or Twitter method or suggest an edit to an existing one? [Create a PR](https://pipedream.com) in this repo.
 
