@@ -192,7 +192,47 @@ async _makeRequest(config, attempt = 0) {
 },
 ```
 
-## Integration Details
+## Top Sources
+
+Event sources run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
+
+| Source                                            | Description                                                  | Popularity |
+| ------------------------------------------------- | ------------------------------------------------------------ | ---------- |
+| [Search Mentions](./sources/search-mentions)      | Emit new Tweets when a new tweet matches your search.        | 9.9        |
+| [New Tweets by User](./sources/search-mentions)   | Emit new Tweets when when there is a new Tweet from a specific user. | 9.8        |
+| [New Followers](./sources/search-mentions)        | Emit new Tweets when when you get a new follower.            | 7.2        |
+| [My Liked Tweets](./sources/search-mentions)      | Emit new Tweets when when you get a new follower.            | 6.3        |
+| [New Follower of User](./sources/search-mentions) | Emit new Tweets when when you get a new follower.            | 5.5        |
+
+**[View All Sources (8)](./sources/search-mentions)**
+
+
+## Top Actions
+
+Actions are reusable components that implement popular operations. You can execute actions on demand or trigger and orchestrate their execution in workflows.
+
+| Source                                            | Description                                                  | Popularity |
+| ------------------------------------------------- | ------------------------------------------------------------ | ---------- |
+| [Search Mentions](./sources/search-mentions)      | Emit new Tweets when a new tweet matches your search.        | 9.9        |
+| [New Tweets by User](./sources/search-mentions)   | Emit new Tweets when when there is a new Tweet from a specific user. | 9.8        |
+| [New Followers](./sources/search-mentions)        | Emit new Tweets when when you get a new follower.            | 7.2        |
+| [My Liked Tweets](./sources/search-mentions)      | Emit new Tweets when when you get a new follower.            | 6.3        |
+| [New Follower of User](./sources/search-mentions) | Emit new Tweets when when you get a new follower.            | 5.5        |
+
+**[View All Actions (15)](./sources/search-mentions)**
+
+
+## Top ` npm` Packages
+
+| Source                              | Description                                                  | Popularity |
+| ----------------------------------- | ------------------------------------------------------------ | ---------- |
+| [moment](./sources/search-mentions) | A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates. | 9.8        |
+| [querystring]()                     | Parse and stringify URL query strings                        | 8.7        |
+
+
+## About Twitter
+
+From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. 
 
 ### Name Slug
 
@@ -306,48 +346,6 @@ None
 #### Refresh Token Request
 
 Not required
-
-## Top Sources
-
-Event sources run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
-
-| Source                                            | Description                                                  | Popularity |
-| ------------------------------------------------- | ------------------------------------------------------------ | ---------- |
-| [Search Mentions](./sources/search-mentions)      | Emit new Tweets when a new tweet matches your search.        | 9.9        |
-| [New Tweets by User](./sources/search-mentions)   | Emit new Tweets when when there is a new Tweet from a specific user. | 9.8        |
-| [New Followers](./sources/search-mentions)        | Emit new Tweets when when you get a new follower.            | 7.2        |
-| [My Liked Tweets](./sources/search-mentions)      | Emit new Tweets when when you get a new follower.            | 6.3        |
-| [New Follower of User](./sources/search-mentions) | Emit new Tweets when when you get a new follower.            | 5.5        |
-
-**[View All Sources (8)](./sources/search-mentions)**
-
-
-## Top Actions
-
-Actions are reusable components that implement popular operations. You can execute actions on demand or trigger and orchestrate their execution in workflows.
-
-| Source                                            | Description                                                  | Popularity |
-| ------------------------------------------------- | ------------------------------------------------------------ | ---------- |
-| [Search Mentions](./sources/search-mentions)      | Emit new Tweets when a new tweet matches your search.        | 9.9        |
-| [New Tweets by User](./sources/search-mentions)   | Emit new Tweets when when there is a new Tweet from a specific user. | 9.8        |
-| [New Followers](./sources/search-mentions)        | Emit new Tweets when when you get a new follower.            | 7.2        |
-| [My Liked Tweets](./sources/search-mentions)      | Emit new Tweets when when you get a new follower.            | 6.3        |
-| [New Follower of User](./sources/search-mentions) | Emit new Tweets when when you get a new follower.            | 5.5        |
-
-**[View All Actions (15)](./sources/search-mentions)**
-
-
-## Top ` npm` Packages
-
-| Source                              | Description                                                  | Popularity |
-| ----------------------------------- | ------------------------------------------------------------ | ---------- |
-| [moment](./sources/search-mentions) | A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates. | 9.8        |
-| [querystring]()                     | Parse and stringify URL query strings                        | 8.7        |
-
-
-## About Twitter
-
-From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. 
 
 ## About Pipedream?
 
