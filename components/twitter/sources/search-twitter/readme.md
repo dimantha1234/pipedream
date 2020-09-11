@@ -23,7 +23,7 @@ curl -d '{"component_url":"https://github.com/PipedreamHQ/pipedream/blob/master/
 ```
 
 
-## Configure
+## Source Configuration
 
 Pipedream will walk you through configuring this source when you activate via the UI or CLI. You may also update any of these settings after deploying.
 
