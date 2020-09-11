@@ -21,7 +21,7 @@ module.exports = {
   }, 
   async run(event) {
     const response = await axios(this, {
-      url: `/1.1/account/verify_credentials.json`,
+      url: `https://api.twitter.com/1.1/account/verify_credentials.json`,
     }, {
       token: {
         key: this.twitter.$auth.oauth_access_token,
