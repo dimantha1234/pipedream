@@ -1,3 +1,29 @@
+<p align="center">
+  <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align="center">    
+  <h1 align="center"><strong>Twitter: Search Mentions</strong></h1>
+  <p align="center">Emit new Tweets that match your search criteria. Inspect emitted events, trigger Pipedream workflows, or consume events in your own app using APIs.</p>
+  <p align="center"><a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=Run%20on%20Pipedream&color=brightgreen&style=for-the-badge" align="center"></a></p>
+  <p align="center"><a href="http://pipedream.com"><img src="https://img.shields.io/static/v1?label=&message=View%20Source%20Code&color=lightgrey&style=for-the-badge" align="center"></a></p>
+</p>
+
+
+*Deploy using Pipdream CLI*
+
+```bash
+pd deploy https://github.com/psavkar/pipedream/blob/readme-test/components/twitter/sources/search-twitter/search-twitter.js
+```
+
+*Deploy using Pipdream API*
+
+```bash
+curl -d '{"component_url":"https://github.com/PipedreamHQ/pipedream/blob/master/components/http/http.js"}' \
+  -H "Authorization: Bearer <API-KEY>" \
+  -H "Content-Type: application/json" \
+  "https://api.pipedream.com/v1/sources"
+```
+
+
+
 <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align=left>    
 <h1 align="left"><strong>Twitter</strong></h1>
 
