@@ -99,109 +99,6 @@ Actions are reusable components that implement popular operations. You can execu
 | [querystring]()                     | Parse and stringify URL query strings                        | 8.7        |
 
 
-## Connecting Your Twitter Account
-
-Connect your Twitter account with a click using Pipedream's browser-based OAuth flow. You can initiate auth at https://pipedream.com/apps or via the CLI.
-
-### Scopes
-
-Pipedream requests the following scopes when you connect your account. [Contact us](https://pipedream.com) to request additional scopes.
-
-| Scope     | Description           |
-| ------- | --------------- |
-| `Read and Write` | This permission level permits read and write access to Twitter resources, including the ability to read a user’s Tweets, home timeline, and profile information; and to post Tweets, follow users, or update elements of a user’s profile information. It also allows write access to send Direct Messages on behalf of a user (POST direct_messages/events/new) but does not provide the ability to read or delete Direct Messages. |
-
-### OAuth Configuration
-
-Twitter’s API relies on the `OAuth 1.0a` protocol. At a very simplified level, Twitter’s implementation requires that requests needing `authorization` contain an additional HTTP Authorization header.
-
-Pipedream integrates with the following endpoints using the configuration below when you connect your account.
-
-#### Request Token
-
-##### Endpoint
-
-```
-https://api.twitter.com/oauth/request_token
-```
-
-##### Configuration
-
-###### URL Params
-
-None
-
-###### Header Params (1)
-
-| Key     | Value           |
-| ------- | --------------- |
-| `OAuth` | `authorization` |
-
-###### Body Params
-
-None
-
-#### Authorization Request
-
-##### Endpoint
-
-```
-https://api.twitter.com/oauth/authenticate
-```
-
-##### Configuration
-
-###### URL Params (7)
-
-| Key             | Value                              |
-| --------------- | ---------------------------------- |
-| `client_id`     | `{{oauth.client_id}}`              |
-| `state`         | `{{oauth.state}}`                  |
-| `redirect_uri`  | `{{oauth.redirect_url}}`           |
-| `response_type` | `code`                             |
-| `scope`         | `{{oauth.space_separated_scopes}}` |
-| `oauth_token`   | `{{oauth.token}}`                  |
-| `force_login`   | `true`                             |
-
-###### Header Params
-
-None
-
-###### Body Params
-
-None
-
-#### Access Token Request
-
-##### Endpoint
-
-```
-https://api.twitter.com/oauth/access_token
-```
-
-##### Configuration
-
-###### URL Params 
-
-None
-
-###### Header Params (2)
-
-| Key            | Value                               |
-| -------------- | ----------------------------------- |
-| `OAuth`        | `authorization`                     |
-| `content-type` | `application/x-www-form-urlencoded` |
-
-###### Body Params
-
-None
-
-#### Refresh Token Request
-
-Not required
-
-
-
 ## Using Twitter in Components
 
 
@@ -319,4 +216,106 @@ async _makeRequest(config, attempt = 0) {
   return await axios(config)
 },
 ```
+
+
+## Connecting Your Twitter Account
+
+Connect your Twitter account with a click using Pipedream's browser-based OAuth flow. You can initiate auth at https://pipedream.com/apps or via the CLI.
+
+### Scopes
+
+Pipedream requests the following scopes when you connect your account. [Contact us](https://pipedream.com) to request additional scopes.
+
+| Scope     | Description           |
+| ------- | --------------- |
+| `Read and Write` | This permission level permits read and write access to Twitter resources, including the ability to read a user’s Tweets, home timeline, and profile information; and to post Tweets, follow users, or update elements of a user’s profile information. It also allows write access to send Direct Messages on behalf of a user (POST direct_messages/events/new) but does not provide the ability to read or delete Direct Messages. |
+
+### OAuth Configuration
+
+Twitter’s API relies on the `OAuth 1.0a` protocol. At a very simplified level, Twitter’s implementation requires that requests needing `authorization` contain an additional HTTP Authorization header.
+
+Pipedream integrates with the following endpoints using the configuration below when you connect your account.
+
+#### Request Token
+
+##### Endpoint
+
+```
+https://api.twitter.com/oauth/request_token
+```
+
+##### Configuration
+
+###### URL Params
+
+None
+
+###### Header Params (1)
+
+| Key     | Value           |
+| ------- | --------------- |
+| `OAuth` | `authorization` |
+
+###### Body Params
+
+None
+
+#### Authorization Request
+
+##### Endpoint
+
+```
+https://api.twitter.com/oauth/authenticate
+```
+
+##### Configuration
+
+###### URL Params (7)
+
+| Key             | Value                              |
+| --------------- | ---------------------------------- |
+| `client_id`     | `{{oauth.client_id}}`              |
+| `state`         | `{{oauth.state}}`                  |
+| `redirect_uri`  | `{{oauth.redirect_url}}`           |
+| `response_type` | `code`                             |
+| `scope`         | `{{oauth.space_separated_scopes}}` |
+| `oauth_token`   | `{{oauth.token}}`                  |
+| `force_login`   | `true`                             |
+
+###### Header Params
+
+None
+
+###### Body Params
+
+None
+
+#### Access Token Request
+
+##### Endpoint
+
+```
+https://api.twitter.com/oauth/access_token
+```
+
+##### Configuration
+
+###### URL Params 
+
+None
+
+###### Header Params (2)
+
+| Key            | Value                               |
+| -------------- | ----------------------------------- |
+| `OAuth`        | `authorization`                     |
+| `content-type` | `application/x-www-form-urlencoded` |
+
+###### Body Params
+
+None
+
+#### Refresh Token Request
+
+Not required
 
