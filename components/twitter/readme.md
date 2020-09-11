@@ -1,7 +1,7 @@
 <p align="center">
   <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align="center">    
   <h1 align="center"><strong>Twitter</strong></h1>
-  <p align="center">From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. And Pipedream is the fastest way to integrate with Twitter APIs and trigger code on any Twitter event.</p>
+  <p align="center">From breaking news and entertainment to sports and politics, from big events to everyday interests. If it's happening anywhere, it's happening on Twitter. And Pipedream is the fastest way to integrate with Twitter APIs and trigger code on any Twitter event with advanced controls to manage concurrency, rate limits and de-duplication of events.</p>
 </p>
 
 <!--## Run Node.js with Twitter auth — try it now-->
@@ -9,10 +9,6 @@
 ## Integrate with Twitter using Pipedream
 
 Connect your Twitter account to Pipedream and use tokens in code to use any Twitter API in seconds. Pipedream manages the OAuth handshake and refresh process.
-
-- Instantiate open source components in seconds or author your own
-- Emit events that you can inspect or use to trigger code hosted on Pipedream or in your own app
-- Customize concurrency and rate limits of emitted events
 
 ```javascript
 const twitter = require('https://github.com/PipedreamHQ/pipedream/components/twitter/twitter.app.js')
