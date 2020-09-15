@@ -6,6 +6,22 @@
 
 ![twitter](https://res.cloudinary.com/db4fbls0o/image/upload/v1599853828/test/twitter-app-v2.png)
 
+
+## Top Sources
+
+Event sources run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
+
+| Source                                            | Description                                                  | Popularity |
+| ------------------------------------------------- | ------------------------------------------------------------ | ---------- |
+| [Search Mentions](./sources/search-mentions)      | Emit new Tweets when a new tweet matches your search.        | 9.9        |
+| [New Tweets by User](./sources/search-mentions)   | Emit new Tweets when when there is a new Tweet from a specific user. | 9.8        |
+| [New Followers](./sources/search-mentions)        | Emit new Tweets when when you get a new follower.            | 7.2        |
+| [My Liked Tweets](./sources/search-mentions)      | Emit new Tweets when when you get a new follower.            | 6.3        |
+| [New Follower of User](./sources/search-mentions) | Emit new Tweets when when you get a new follower.            | 5.5        |
+
+**[View All Sources (8)](./sources/search-mentions)**
+
+
 <!-- with advanced controls to manage concurrency, delivery rates and de-duplication of events-->
 
 ## Connect Your Twitter Account
@@ -191,20 +207,6 @@ async _makeRequest(config, attempt = 0) {
   return await axios(config)
 },
 ```
-
-## Top Sources
-
-Event sources run on Pipedream's infrastructure and turn any API into an event stream. You can trigger Pipedream workflows, or which you can consume using Pipedream's REST API or a private, real-time SSE stream.
-
-| Source                                            | Description                                                  | Popularity |
-| ------------------------------------------------- | ------------------------------------------------------------ | ---------- |
-| [Search Mentions](./sources/search-mentions)      | Emit new Tweets when a new tweet matches your search.        | 9.9        |
-| [New Tweets by User](./sources/search-mentions)   | Emit new Tweets when when there is a new Tweet from a specific user. | 9.8        |
-| [New Followers](./sources/search-mentions)        | Emit new Tweets when when you get a new follower.            | 7.2        |
-| [My Liked Tweets](./sources/search-mentions)      | Emit new Tweets when when you get a new follower.            | 6.3        |
-| [New Follower of User](./sources/search-mentions) | Emit new Tweets when when you get a new follower.            | 5.5        |
-
-**[View All Sources (8)](./sources/search-mentions)**
 
 
 ## Top Actions
