@@ -1,8 +1,8 @@
 <p align="center">
   <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align="center">    
   <h1 align="center"><strong>Do more with the Twitter API!</strong></h1>
-  <p align="center">Trigger code on any Twitter event like new search mentions, new followers, new Tweets by a user and more! Or integrate Twitter (e.g., post a Tweet) on events from any app, HTTP request or schedule.</p>
-  <p align="center">Pipedream provides the ease of getting started of no code tools, but with full code-level transparency and controls, coupled with tools for developers to fully customize their integrations and workflows.</p>
+  <p align="center">Trigger code on any Twitter event like new search mentions, new followers, new Tweets by a user and more!<br>Or integrate Twitter (e.g., post a Tweet) on events from any app, HTTP request or schedule.</p>
+  <!--p align="center">Pipedream provides the ease of getting started of no code tools, but with full code-level transparency and controls, coupled with tools for developers to fully customize their integrations and workflows.</p>
   <p align="center">Browse the most popular open source <a href="#top-sources">event sources</a> and <a href="#top-sources">actions</a>, <a href="#top-sources">write your own</a>, or <a href="#top-sources">contribute to the community</a>!</p>
   <!--p align="center">Trigger code on any Twitter event or integrate any Twitter API on events from any app, HTTP request or schedule. Browse the most popular open source <a href="#top-sources">event sources</a> and <a href="#top-sources">actions</a>, <a href="#top-sources">write your own</a>, or <a href="#top-sources">contribute to the community</a>!</p-->
 </p>
