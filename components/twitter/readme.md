@@ -1,10 +1,10 @@
 <p align="center">
   <img height="40" src="https://github.com/psavkar/pipedream/raw/readme-test/images/twitter/TwitterLogo.png" align="center">    
-  <h1 align="center"><strong>The fastest way to integrate Twitter APIs and run any code</strong></h1>
+  <h1 align="center"><strong>Do more with the Twitter API!</strong></h1>
   <p align="center">Trigger code on any Twitter event or integrate any Twitter API on events from any app, HTTP request or schedule. Browse the most popular open source <a href="#top-sources">event sources</a> and <a href="#top-sources">actions</a>, <a href="#top-sources">write your own</a>, or <a href="#top-sources">contribute to the community</a>!</p>
 </p>
 
-![twitter](https://res.cloudinary.com/db4fbls0o/image/upload/v1599853828/test/twitter-app-v2.png)
+<!--![twitter](https://res.cloudinary.com/db4fbls0o/image/upload/v1599853828/test/twitter-app-v2.png)-->
 
 
 ## Top Sources
