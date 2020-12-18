@@ -17,7 +17,7 @@ We provide a free, hosted platform that makes it easy to connect apps and develo
 * Serverless - No server or cloud resources to manage
 * [Free](#pricing) - No fees for individual developers (see [limits](https://docs.pipedream.com/limits/))
 
-**Product Demo**: [YouTube](https://www.youtube.com/watch?v=hJ-KRbp6EO8&feature=youtu.be) (5 minutes)
+**Products Demo**: [YouTube](https://www.youtube.com/watch?v=hJ-KRbp6EO8&feature=youtu.be) (5 minutes)
 
 You can also [get support](#getting-support), [raise a bug or feature request](#found-a-bug-have-a-feature-to-suggest), or [file a security disclosure](#security-disclosures).
 
